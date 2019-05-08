@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import './App.scss';
 import { apikey } from '../../utils/apikey';
 import { fetchMovie } from '../../utils/fetchMovie.js';
+import { addMovies } from '../../actions'
+import { connect } from 'react-redux';
 
-export default class App extends Component {
+class App extends Component {
   constructor() {
     super();
     this.state={
@@ -25,15 +27,15 @@ export default class App extends Component {
         title: movie.title,
         image: movie.poster_path,
         overview: movie.overview,
-        id: movie.id
+        id: movie.id,
+        favorited: false
       }
     })
-    this.setState({
-      movies: results
-    })
+    console.log(results)
+    this.props.addMovies(
+    results
+    )
   }
-
-
 
   render() {
     return (
@@ -43,4 +45,14 @@ export default class App extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  movies: state.movies
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  addMovies: (movies) => dispatch(addMovies(movies))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
 
