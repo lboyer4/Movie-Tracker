@@ -21,6 +21,8 @@ class App extends Component {
     ) 
   }
 
+  //comment
+
   makeMovies = (results) => {
     console.log('results before', results)
     results = results.map(movie => {
