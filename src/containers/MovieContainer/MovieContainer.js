@@ -1,9 +1,12 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Movie from '../../components/Movie/Movie';
 
 const MovieContainer = (props) => {
-  console.log(props.movies)
-  const image = props.movies.length && <img src={props.movies[0].image} />
+  const image = props.movies.map(movie => {
+    return <Movie {...movie}/>
+  })
+  // props.movies.length && <img src={props.movies[0].image} />
   return(
     <section>
       {image}
