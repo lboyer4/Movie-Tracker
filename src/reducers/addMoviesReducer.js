@@ -8,5 +8,3 @@ export const addMovies = (state = initialState, action) => {
 			return state
 	}
 }
-
-///maybe this will work now

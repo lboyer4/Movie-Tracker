@@ -4,6 +4,7 @@ import { apikey } from '../../utils/apikey';
 import { fetchMovie } from '../../utils/fetchMovie.js';
 import { addMovies } from '../../actions'
 import { connect } from 'react-redux';
+import MovieContainer from '../../containers/MovieContainer/MovieContainer';
 
 class App extends Component {
   constructor() {
@@ -20,12 +21,14 @@ class App extends Component {
     ) 
   }
 
+  //comment
+
   makeMovies = (results) => {
     console.log('results before', results)
     results = results.map(movie => {
       return {
         title: movie.title,
-        image: movie.poster_path,
+        image: 'https://image.tmdb.org/t/p/w300_and_h450_bestv2/' + movie.poster_path,
         overview: movie.overview,
         id: movie.id,
         favorited: false
@@ -41,6 +44,7 @@ class App extends Component {
     return (
       <div className="App">
         Movie-Tracker
+        <MovieContainer />
       </div>
     );
   }
