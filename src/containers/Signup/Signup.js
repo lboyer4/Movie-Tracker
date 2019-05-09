@@ -13,10 +13,30 @@ export default class Signup extends Component {
 
 	render() {
 		return (
-			<div>
-				Signup
 
-			</div>
-			)
+			<form>
+				<h1> Welcome! Please create an account to continue. </h1> 
+				<input 
+					type="text" 
+					name="name" 
+					placeholder="name" 
+					value={this.state.name}
+				/>
+				<input 
+					type="text"
+					name="username"
+					placeholder="username"
+					value={this.state.username}
+				/>
+				<input
+					type="text"
+					name="password"
+					placeholder="password"
+					value={this.state.password} 
+				/>
+
+				<button> Submit </button>
+			</form>
+		)
 	}
 }
