@@ -40,6 +40,8 @@ export default class Login extends Component {
 		.then(results => {
 			if(results === 'error') {
 				this.setState({error: 'Email and password do not match, please try again'})
+			} else {
+				this.setState({ loggedIn: true })
 			}
 		})
 	}
