@@ -49,10 +49,6 @@ export default class Signup extends Component {
 	}
 
 	render() {
-		// if (this.state.email === ) {
-		// 	return 'email has already be used'
-		// }
-		
 		return (
 
 			<form onSubmit = {this.handleSubmit}>
@@ -73,7 +69,7 @@ export default class Signup extends Component {
 					onChange={this.handleChange}
 				/>
 				<input
-					type="text"
+					type="password"
 					name="password"
 					placeholder="password"
 					value={this.state.password} 

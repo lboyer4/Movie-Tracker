@@ -7,7 +7,8 @@ export default class Login extends Component {
 		this.state = {
 			email: '',
 			password: '',
-			loggedIn: false
+			loggedIn: false,
+			error: ''
 		}
 	}
 
@@ -19,6 +20,7 @@ export default class Login extends Component {
 	handleSubmit = (e) => {
 		e.preventDefault();
 		this.postLogin(this.state);
+		this.setState({ email: '', password: '' })
 	}
 
 	postLogin = (state) => {
@@ -35,14 +37,20 @@ export default class Login extends Component {
 			})
 		}
 		fetchUsers(url, options)
-
+		.then(results => {
+			if(results === 'error') {
+				this.setState({error: 'Email and password do not match, please try again'})
+			} else {
+				this.setState({ loggedIn: true })
+			}
+		})
 	}
 
 	render() {
 		return (
 			<form onSubmit={this.handleSubmit}>
 				<h1> Sign-in to continue! </h1>
-				
+				<h3>{this.state.error}</h3>
 				<input 
 					type="text"
 					name="email"
@@ -51,7 +59,7 @@ export default class Login extends Component {
 					onChange={this.handleChange}
 				/>
 				<input
-					type="text"
+					type="password"
 					name="password"
 					placeholder="password"
 					value={this.state.password} 
