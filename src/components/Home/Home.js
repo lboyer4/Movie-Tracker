@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 
 
-export default class Signup extends Component {
+export default class Home extends Component {
 	constructor() {
 		super()
 		this.state = {
-			name: '',
 			username: '',
 			password: ''
 		}
@@ -14,8 +13,7 @@ export default class Signup extends Component {
 	render() {
 		return (
 			<div>
-				Signup
-
+			  yeah
 			</div>
 			)
 	}
