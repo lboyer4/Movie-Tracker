@@ -1,5 +1,5 @@
-export const fetchUsers = () => {
-  return fetch('http://localhost:3000/api/users')
+export const fetchUsers = (url, options) => {
+  return fetch(url, options)
   .then(response => {
     if(!response.ok) {
       throw Error ('Error fetching users')

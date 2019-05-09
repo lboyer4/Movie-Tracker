@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { fetchUsers } from '../../utils/fetchUsers';
 
 export default class Signup extends Component {
 	constructor() {
@@ -35,11 +35,16 @@ export default class Signup extends Component {
 					password
 			})
 		}
-		fetch(url, options)
-			.catch(error => console.log(error))
+		const newUser = fetchUsers(url, options)
+		console.log('new user', newUser)
+
 	}
 
 	render() {
+		// if (this.state.email === ) {
+		// 	return 'email has already be used'
+		// }
+		
 		return (
 
 			<form onSubmit = {this.handleSubmit}>

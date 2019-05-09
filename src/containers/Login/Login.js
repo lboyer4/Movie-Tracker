@@ -34,9 +34,9 @@ export default class Login extends Component {
 				password
 			})
 		}
-		fetch(url, options)
-		.then(response => console.log('response', response))
-		.catch(error => console.log(error))
+		const users = fetchUsers(url, options)
+
+		console.log(users)
 	}
 
 	render() {
