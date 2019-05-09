@@ -7,7 +7,8 @@ export default class Signup extends Component {
 		this.state = {
 			name: '',
 			email: '',
-			password: ''
+			password: '',
+			error: ''
 		}
 	}
 
@@ -19,6 +20,7 @@ export default class Signup extends Component {
 	handleSubmit = (e) => {
 		e.preventDefault();
 		this.postUserInput(this.state)
+		this.setState({ name: '', email: '', password: '' })
 	}
 
 	postUserInput = (state) => {
@@ -36,7 +38,13 @@ export default class Signup extends Component {
 			})
 		}
 		const newUser = fetchUsers(url, options)
-		console.log('new user', newUser)
+		.then(results => {
+			if (results === 'error') {
+			this.setState({error: 'Email has already been used, try again.'})
+			}
+		})
+		
+		
 
 	}
 
@@ -49,6 +57,7 @@ export default class Signup extends Component {
 
 			<form onSubmit = {this.handleSubmit}>
 				<h1> Welcome! Please create an account to continue. </h1> 
+				<h3> {this.state.error} </h3>
 				<input 
 					type="text" 
 					name="name" 
