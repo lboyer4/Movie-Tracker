@@ -5,8 +5,9 @@ export default class Login extends Component {
 	constructor() {
 		super()
 		this.state = {
-			username: '',
-			password: ''
+			email: '',
+			password: '',
+			loggedIn: false
 		}
 	}
 
@@ -17,13 +18,25 @@ export default class Login extends Component {
 
 	handleSubmit = (e) => {
 		e.preventDefault();
-		this.getUserInput(this.state);
+		this.postLogin(this.state);
 	}
 
-	getUserInput = (state) => {
-		const userPromise = fetchUsers();
-		console.log('userPromise', userPromise)
-		return userPromise;
+	postLogin = (state) => {
+		const url = 'http://localhost:3000/api/users';
+		const { email, password } = state;
+		const options = {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				email, 
+				password
+			})
+		}
+		fetch(url, options)
+		.then(response => console.log('response', response))
+		.catch(error => console.log(error))
 	}
 
 	render() {
@@ -32,9 +45,9 @@ export default class Login extends Component {
 				<h1> Sign-in to continue! </h1>
 				<input 
 					type="text"
-					name="username"
-					placeholder="username"
-					value={this.state.username}
+					name="email"
+					placeholder="email"
+					value={this.state.email}
 					onChange={this.handleChange}
 				/>
 				<input
