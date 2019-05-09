@@ -28,7 +28,6 @@ class App extends Component {
   //comment
 
   makeMovies = (results) => {
-    console.log('results before', results)
     results = results.map(movie => {
       return {
         title: movie.title,
@@ -38,7 +37,6 @@ class App extends Component {
         favorited: false
       }
     })
-    console.log(results)
     this.props.addMovies(
     results
     )
