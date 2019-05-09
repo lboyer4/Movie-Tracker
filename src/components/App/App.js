@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import './App.scss';
+import { Route, Switch, NavLink } from 'react-router-dom';
 import { apikey } from '../../utils/apikey';
 import { fetchMovie } from '../../utils/fetchMovie.js';
 import { addMovies } from '../../actions'
 import { connect } from 'react-redux';
 import MovieContainer from '../../containers/MovieContainer/MovieContainer';
-
+import Header  from '../Header/Header';
+import  Login  from '../../containers/Login/Login';
+import Signup from '../../containers/Signup/Signup';
+import Home from '../Home/Home';
 class App extends Component {
   constructor() {
     super();
@@ -43,8 +47,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        Movie-Tracker
-        <MovieContainer />
+        <Route exact path="/" component= { Header  } />     
+        <Route exact path="/" component= { MovieContainer }/>
+        <Route exact path="/login" component={ Login } />
+        <Route exact path="/signup" component={ Signup } />
       </div>
     );
   }
