@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import './App.scss';
+import './_App.scss';
+import '../../index.scss';
 import { Route, Switch, NavLink } from 'react-router-dom';
 import { apikey } from '../../utils/apikey';
 import { fetchMovie } from '../../utils/fetchMovie.js';

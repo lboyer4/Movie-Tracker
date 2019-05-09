@@ -6,10 +6,13 @@ const MovieContainer = (props) => {
   const image = props.movies.map(movie => {
     return <Movie {...movie}/>
   })
-  // props.movies.length && <img src={props.movies[0].image} />
   return(
     <section>
+      <section className='image-container'>
+      <section className='image'>
       {image}
+      </section>
+      </section>
     </section>
   )
 }
