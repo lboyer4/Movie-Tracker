@@ -5,6 +5,7 @@ import { fetchMovie } from '../../utils/fetchMovie.js';
 import { addMovies } from '../../actions'
 import { connect } from 'react-redux';
 import MovieContainer from '../../containers/MovieContainer/MovieContainer';
+import Header  from '../Header/Header';
 
 class App extends Component {
   constructor() {
@@ -43,6 +44,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+      <Header />
         Movie-Tracker
         <MovieContainer />
       </div>
