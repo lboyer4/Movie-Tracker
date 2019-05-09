@@ -6,33 +6,64 @@ export default class Signup extends Component {
 		super()
 		this.state = {
 			name: '',
-			username: '',
+			email: '',
 			password: ''
 		}
+	}
+
+	handleChange = (e) => {
+		const { name, value } = e.target;
+		this.setState({ [name] : value })
+	}
+
+	handleSubmit = (e) => {
+		e.preventDefault();
+		this.postUserInput(this.state)
+	}
+
+	postUserInput = (state) => {
+		const url = 'http://localhost:3000/api/users/new';
+		const { name, email, password } = state;
+		const options = { 
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+					name,
+					email,
+					password
+			})
+		}
+		fetch(url, options)
+			.catch(error => console.log(error))
 	}
 
 	render() {
 		return (
 
-			<form>
+			<form onSubmit = {this.handleSubmit}>
 				<h1> Welcome! Please create an account to continue. </h1> 
 				<input 
 					type="text" 
 					name="name" 
 					placeholder="name" 
 					value={this.state.name}
+					onChange={this.handleChange}
 				/>
 				<input 
 					type="text"
-					name="username"
-					placeholder="username"
-					value={this.state.username}
+					name="email"
+					placeholder="email"
+					value={this.state.email}
+					onChange={this.handleChange}
 				/>
 				<input
 					type="text"
 					name="password"
 					placeholder="password"
 					value={this.state.password} 
+					onChange={this.handleChange}
 				/>
 
 				<button> Submit </button>
