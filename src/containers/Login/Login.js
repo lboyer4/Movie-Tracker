@@ -34,15 +34,15 @@ export default class Login extends Component {
 				password
 			})
 		}
-		fetch(url, options)
-		.then(response => console.log('response', response))
-		.catch(error => console.log(error))
+		fetchUsers(url, options)
+
 	}
 
 	render() {
 		return (
 			<form onSubmit={this.handleSubmit}>
 				<h1> Sign-in to continue! </h1>
+				
 				<input 
 					type="text"
 					name="email"
