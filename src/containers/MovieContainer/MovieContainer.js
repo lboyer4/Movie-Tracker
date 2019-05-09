@@ -7,7 +7,7 @@ const MovieContainer = (props) => {
     return <Movie {...movie}/>
   })
   return(
-    <section>
+    <section className='main'>
       <section className='image-container'>
       <section className='image'>
       {image}

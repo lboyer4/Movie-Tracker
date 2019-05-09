@@ -12,9 +12,11 @@ export default class Header extends Component {
 	render() {
 		return (
 			<header>
-				<h1> Movie Tracker </h1>
+				<h1 className='title'> Movie Tracker </h1>
+				<section className='link-wrapper'>
 				<NavLink to='/login' className="nav"> Login </NavLink>
 				<NavLink to='/signup' className="nav">Signup</NavLink>
+				</section>
 
 			</header>
 

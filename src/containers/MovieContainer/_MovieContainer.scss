@@ -1,8 +1,9 @@
-.image-container {
+.main {
   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .image {
-
   border-radius: 2rem;
 }
