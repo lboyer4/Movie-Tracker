@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { fetchUsers } from '../../utils/fetchUsers';
+import { connect } from 'react-redux';
+import { updateLogin } from '../../actions';
 
-export default class Login extends Component {
+class Login extends Component {
 	constructor() {
 		super()
 		this.state = {
@@ -42,6 +44,9 @@ export default class Login extends Component {
 				this.setState({error: 'Email and password do not match, please try again'})
 			} else {
 				this.setState({ loggedIn: true })
+				this.props.updateLogin(
+					this.state.loggedIn
+				)
 			}
 		})
 	}
@@ -72,3 +77,13 @@ export default class Login extends Component {
 			)
 	}
 }
+
+const mapStateToProps = (state) => ({
+	loggedIn: state.loggedIn
+})
+
+const mapDispatchToProps = (dispatch) => ({
+	updateLogin: (loggedIn) => dispatch(updateLogin(loggedIn))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login)
