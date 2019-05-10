@@ -5,15 +5,16 @@ header {
 
 .title {
   font-family: $header-font;
-  font-size: 2rem;
+  font-size: 2.6rem;
   color: $header-color;
+  letter-spacing: .3rem;
   margin-left: 1rem;
 }
 
 .link-wrapper {
   font-family: $link-font;
   margin-right: 1rem;
-  margin-top: 1rem;
+  margin-top: 1.5rem;
   display: flex;
 }
 
