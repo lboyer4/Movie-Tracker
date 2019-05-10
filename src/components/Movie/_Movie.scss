@@ -1,0 +1,15 @@
+.movie-title {
+  font-family: $movie-title-font;
+  color: $movie-title-color;
+  letter-spacing: .1rem;
+}
+
+.movie-overview {
+  color: $overview-color;
+}
+
+.card {
+  margin: auto;
+  max-width: 19rem;
+  border-radius: 2rem;
+}

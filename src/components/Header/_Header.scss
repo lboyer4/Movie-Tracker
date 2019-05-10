@@ -1,0 +1,29 @@
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  font-family: $header-font;
+  font-size: 2.6rem;
+  color: $header-color;
+  letter-spacing: .3rem;
+  margin-left: 1rem;
+}
+
+.link-wrapper {
+  font-family: $link-font;
+  margin-right: 1rem;
+  margin-top: 1.5rem;
+  display: flex;
+}
+
+a.nav {
+  color: $link-color;
+  font-size: 1.3rem;
+  text-decoration: none;
+  margin: .8rem;
+  &:hover {
+    color: $link-hover-color;
+  }
+}

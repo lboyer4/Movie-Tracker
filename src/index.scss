@@ -1,0 +1,10 @@
+@import '_variables';
+@import './components/Header/Header.scss';
+@import './containers/MovieContainer/MovieContainer.scss';
+@import './components/Movie/Movie';
+
+body, html {
+  background: linear-gradient( rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.82) ), url('./theater-seats.jpg');
+  background-size: 100%;
+  background-position: center;
+}
