@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { fetchUsers } from '../../utils/fetchUsers';
+import './_Signup.scss'
 
 export default class Signup extends Component {
 	constructor() {
@@ -51,10 +52,11 @@ export default class Signup extends Component {
 	render() {
 		return (
 
-			<form onSubmit = {this.handleSubmit}>
+			<form className="submit-form" onSubmit = {this.handleSubmit}>
 				<h1> Welcome! Please create an account to continue. </h1> 
-				<h3> {this.state.error} </h3>
+				<h3 className="error-msg"> {this.state.error} </h3>
 				<input 
+					className="name"
 					type="text" 
 					name="name" 
 					placeholder="name" 
@@ -76,7 +78,7 @@ export default class Signup extends Component {
 					onChange={this.handleChange}
 				/>
 
-				<button> Submit </button>
+				<button className="submit-btn"> Submit </button>
 			</form>
 		)
 	}

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { fetchUsers } from '../../utils/fetchUsers';
 import { connect } from 'react-redux';
 import { updateLogin } from '../../actions';
+import './Login.scss';
 
 class Login extends Component {
 	constructor() {
@@ -41,7 +42,7 @@ class Login extends Component {
 		fetchUsers(url, options)
 		.then(results => {
 			if(results === 'error') {
-				this.setState({error: 'Email and password do not match, please try again'})
+				this.setState({error: '*Email and password do not match, please try again'})
 			} else {
 				this.setState({ loggedIn: true })
 				this.props.updateLogin(
@@ -53,10 +54,11 @@ class Login extends Component {
 
 	render() {
 		return (
-			<form onSubmit={this.handleSubmit}>
+			<form className="signin-form" onSubmit={this.handleSubmit}>
 				<h1> Sign-in to continue! </h1>
-				<h3>{this.state.error}</h3>
+				<h3 className="error-msg" >{this.state.error}</h3>
 				<input 
+					className="email-input"
 					type="text"
 					name="email"
 					placeholder="email"
@@ -71,7 +73,7 @@ class Login extends Component {
 					onChange={this.handleChange}
 				/>
 
-				<button> Submit </button>
+				<button className="submit-btn"> Submit </button>
 
 			</form>
 			)
