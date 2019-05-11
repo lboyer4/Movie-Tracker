@@ -41,6 +41,7 @@ class Login extends Component {
 				password
 			})
 		}
+
 		fetchUsers(url, options)
 		.then(results => {
 			if(results === 'error') {
@@ -48,11 +49,12 @@ class Login extends Component {
 			} else {
 				this.setState({ loggedIn: true })
 				this.props.updateLogin(
-					this.state.loggedIn
-				)
+					results.data
+					)
 			}
 		})
 	}
+
 
 	render() {
 
@@ -95,7 +97,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-	updateLogin: (loggedIn) => dispatch(updateLogin(loggedIn))
+	updateLogin: (user) => dispatch(updateLogin(user))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login)

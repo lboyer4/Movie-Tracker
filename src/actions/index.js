@@ -3,7 +3,7 @@ export const addMovies = (movies) => ({
 	movies
 })
 
-export const updateLogin = (loggedIn) => ({
+export const updateLogin = (user) => ({
 	type: 'LOGGED_IN',
-	loggedIn
+	user
 })
