@@ -7,3 +7,8 @@ export const updateLogin = (user) => ({
 	type: 'LOGGED_IN',
 	user
 })
+
+export const logOut = (user) => ({
+	type: 'LOGGED_OUT',
+	user
+})
