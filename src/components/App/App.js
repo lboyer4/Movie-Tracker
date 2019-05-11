@@ -26,7 +26,6 @@ class App extends Component {
     ) 
   }
 
-  //comment
 
   makeMovies = (results) => {
     results = results.map(movie => {

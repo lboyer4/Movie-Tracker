@@ -3,6 +3,8 @@ import { fetchUsers } from '../../utils/fetchUsers';
 import { connect } from 'react-redux';
 import { updateLogin } from '../../actions';
 import './Login.scss';
+import MovieContainer from './../MovieContainer/MovieContainer';
+import { Route, Redirect, Link } from 'react-router-dom';
 
 class Login extends Component {
 	constructor() {
@@ -53,6 +55,12 @@ class Login extends Component {
 	}
 
 	render() {
+
+		if(this.state.loggedIn) {
+			return ( 
+				<Redirect to="/" />
+				)
+		}
 		return (
 			<form className="signin-form" onSubmit={this.handleSubmit}>
 			<div className="create-header">
