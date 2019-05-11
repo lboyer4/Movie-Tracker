@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { fetchUsers } from '../../utils/fetchUsers';
+import './_Signup.scss'
 
 export default class Signup extends Component {
 	constructor() {
@@ -40,7 +41,7 @@ export default class Signup extends Component {
 		const newUser = fetchUsers(url, options)
 		.then(results => {
 			if (results === 'error') {
-			this.setState({error: 'Email has already been used, try again.'})
+			this.setState({error: '*Email has already been used, try again.'})
 			}
 		})
 		
@@ -51,10 +52,13 @@ export default class Signup extends Component {
 	render() {
 		return (
 
-			<form onSubmit = {this.handleSubmit}>
-				<h1> Welcome! Please create an account to continue. </h1> 
-				<h3> {this.state.error} </h3>
+			<form className="submit-form" onSubmit = {this.handleSubmit}>
+			<div className="create-header">
+				<h1 className="form-title"> Create Account </h1> 
+			</div>
+				<h3 className="error-msg"> {this.state.error} </h3>
 				<input 
+					className="name"
 					type="text" 
 					name="name" 
 					placeholder="name" 
@@ -76,7 +80,7 @@ export default class Signup extends Component {
 					onChange={this.handleChange}
 				/>
 
-				<button> Submit </button>
+				<button className="submit-btn"> Submit </button>
 			</form>
 		)
 	}
