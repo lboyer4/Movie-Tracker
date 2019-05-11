@@ -55,7 +55,9 @@ class Login extends Component {
 	render() {
 		return (
 			<form className="signin-form" onSubmit={this.handleSubmit}>
-				<h1> Sign-in to continue! </h1>
+			<div className="create-header">
+				<h1 className="form-title"> Log in </h1>
+			</div>
 				<h3 className="error-msg" >{this.state.error}</h3>
 				<input 
 					className="email-input"

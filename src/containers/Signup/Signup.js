@@ -41,7 +41,7 @@ export default class Signup extends Component {
 		const newUser = fetchUsers(url, options)
 		.then(results => {
 			if (results === 'error') {
-			this.setState({error: 'Email has already been used, try again.'})
+			this.setState({error: '*Email has already been used, try again.'})
 			}
 		})
 		
@@ -53,7 +53,9 @@ export default class Signup extends Component {
 		return (
 
 			<form className="submit-form" onSubmit = {this.handleSubmit}>
-				<h1> Welcome! Please create an account to continue. </h1> 
+			<div className="create-header">
+				<h1 className="form-title"> Create Account </h1> 
+			</div>
 				<h3 className="error-msg"> {this.state.error} </h3>
 				<input 
 					className="name"

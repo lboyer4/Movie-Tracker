@@ -6,8 +6,18 @@
 	margin: auto;
 	margin-top: 2rem;
 	text-align: center;
-	background-color: hsl(61, 90%, 70%);
+	background-color: hsl(62, 82.6%, 82%);
 	color: hsl(14, 90%, 44%);
+}
+
+.login-header {
+	background-color: hsl(14, 90%, 44%);
+	color: hsl(62, 82.6%, 82%);
+	height: 3rem;
+}
+
+.form-title {
+	margin: 0;
 }
 
 .submit-btn {
