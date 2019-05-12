@@ -14,6 +14,16 @@ describe('addMoviesReducer', () => {
   });
 
   it ('should return the state with a new movie', () => {
+    //setup
+    const favorited = 'favorited: false'
+    const expected = favorited
 
+    //execution
+
+    const result = addMovies(undefined, actions.addMovies(favorited))
+
+    //expectation
+
+    expect(result).toEqual(expected)
   });
 })
