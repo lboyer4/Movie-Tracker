@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchUsers } from '../../utils/fetchUsers';
 import { fetchMovie } from '../../utils/fetchMovie';
+import { setFavorites } from '../../actions';
 
 class Movie extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			createAccountMsg: ''
+			createAccountMsg: '',
+			currentMovieId: 0
 		}
 	}
 
@@ -15,15 +17,24 @@ class Movie extends Component {
 		if (!this.props.loggedIn.id)  {
 			this.setState({createAccountMsg: 'please create an account'})
 		} else {
-			this.checkFavoriteMovie(this.props.loggedIn.id)
+			this.fetchCurrentMovies(this.props.loggedIn.id)
 		}
 	}
 
-	checkFavoriteMovie = (id) => {
+	fetchCurrentMovies = (id) => {
 		const url = `http://localhost:3000/api/users/${id}/favorites`
 		const currentMovie = fetchMovie(url)
-		console.log(currentMovie)
+		.then(results => this.props.setFavorites(results.data))
 	}
+
+// 	searchCurrentMovies = (data) => {
+// 		console.log('movieId:', this.props.movie_id)
+// 		data.find(currentMovie => {
+// 			if(currentMovie.id === this.props.movie_id) {
+// 				this.postFavoriteMovie();
+// 			} 
+// 	})
+// }
 
 	postFavoriteMovie = () => {
 		const url = 'http://localhost:3000/api/users/favorites/new';
@@ -67,4 +78,8 @@ const mapStateToProps = (state) => ({
 	loggedIn: state.loggedIn
 })
 
-export default connect(mapStateToProps)(Movie)
+const mapDispatchToProps = (dispatch) => ({
+	setFavorites: (favorites) => dispatch(setFavorites(favorites))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Movie)
