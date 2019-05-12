@@ -12,6 +12,8 @@ import  Login  from '../../containers/Login/Login';
 import Signup from '../../containers/Signup/Signup';
 import Home from '../Home/Home';
 import FavoriteContainer from '../../containers/FavoriteContainer/FavoriteContainer';
+import MovieDetails from '../MovieDetails/MovieDetails'
+
 class App extends Component {
   constructor() {
     super();

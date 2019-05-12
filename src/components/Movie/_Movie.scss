@@ -13,3 +13,19 @@
   max-width: 19rem;
   border-radius: 2rem;
 }
+
+.fav-btn {
+  border-radius: .8rem;
+  font-size: 1.6rem;
+  cursor: pointer;
+  width: 17.8rem;
+  &:hover {
+    background-color: hsl(55, 95%, 47%);
+    border: none;
+  }
+}
+
+.login-msg {
+  color: hsl(0, 100%, 50%);
+  font-size: 1.5rem;
+}
