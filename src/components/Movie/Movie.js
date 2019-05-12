@@ -17,6 +17,7 @@ class Movie extends Component {
 		if (!this.props.loggedIn.id)  {
 			this.setState({createAccountMsg: 'please create an account'})
 		} else {
+			// this.postFavoriteMovie()
 			this.fetchCurrentMovies(this.props.loggedIn.id)
 		}
 	}
