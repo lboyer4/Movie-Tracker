@@ -3,6 +3,8 @@ import { connect } from 'react-redux';
 import { fetchUsers } from '../../utils/fetchUsers';
 import { fetchMovie } from '../../utils/fetchMovie';
 import { toggleFavorite } from '../../actions';
+import { Route, Link } from 'react-router-dom';
+import MovieDetails from '../MovieDetails/MovieDetails';
 
 class Movie extends Component {
 	constructor(props) {
@@ -15,7 +17,7 @@ class Movie extends Component {
 
 	handleClick = () => {
 		if (!this.props.loggedIn.id)  {
-			this.setState({createAccountMsg: 'please create an account'})
+			this.setState({createAccountMsg: '* Please create an account'})
 		} else if(this.props.favorited === false) {
 			this.props.toggleFavorite(this.props.movie_id)
 			this.postFavoriteMovie()
@@ -64,17 +66,19 @@ class Movie extends Component {
 	}
 
 	render() {
+		let movieId = this.props.movie_id
 		let trueMessage = <h4>Delete Favorite</h4>
 		let falseMessage = <h4>Favorite</h4>
 		let toggleMessage = this.props.favorited ? trueMessage : falseMessage
-		let message = <h1>{this.state.createAccountMsg}</h1>
+		let message = <h1 className = 'login-msg'>{this.state.createAccountMsg}</h1>
 	  return(
 	    <section className='card'>
 	      <section className='movie-info-wrapper'>
 	        <h2 className='movie-title'>{this.props.title}</h2>
-	        <img src={this.props.poster_path} />
-	        <p className='movie-overview'>{this.props.overview}</p>
-	        {message}
+	        <Link to={`/movies/${movieId}`}><img src={this.props.poster_path} />
+					</Link> 
+					<Route exact path={`/movies/${movieId}`} component= { MovieDetails } />
+	        	{message}
 	        <button onClick={this.handleClick} className='fav-btn'> {toggleMessage} </button>
 	      </section>
 	    </section>
