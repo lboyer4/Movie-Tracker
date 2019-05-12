@@ -5,6 +5,7 @@ export const fetchMovie = (url) => {
       throw Error('Error fetching movie')
     } else {
       return response.json();
+
     }
   })
 }
