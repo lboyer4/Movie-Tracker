@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchUsers } from '../../utils/fetchUsers';
 import { fetchMovie } from '../../utils/fetchMovie';
+import { toggleFavorite } from '../../actions';
 
 class Movie extends Component {
 	constructor(props) {
@@ -13,16 +14,17 @@ class Movie extends Component {
 	}
 
 	handleClick = () => {
+		console.log('id', this.props.movie_id)
 		if (!this.props.loggedIn.id)  {
 			this.setState({createAccountMsg: 'please create an account'})
-		} else {
+		} else if(this.props.favorited === false) {
+			this.props.toggleFavorite(this.props.movie_id)
 			console.log('hi')
+			this.postFavoriteMovie()
+		} else if (this.props.favorited === true) {
+			this.props.toggleFavorite(this.props.movie_id)
 		}
 	}
-
-	searchCurrentMovies = (data) => {
-		console.log('faves', this.props.favorites)
-}
 
 	postFavoriteMovie = () => {
 		const url = 'http://localhost:3000/api/users/favorites/new';
@@ -63,7 +65,12 @@ class Movie extends Component {
 }
 
 const mapStateToProps = (state) => ({
-	loggedIn: state.loggedIn
+	loggedIn: state.loggedIn,
+	favorites: state.favorites
 })
 
-export default connect(mapStateToProps)(Movie)
+const mapDispatchToProps = (dispatch) => ({
+	toggleFavorite: (id) => dispatch(toggleFavorite(id))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Movie)

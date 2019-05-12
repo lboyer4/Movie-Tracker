@@ -17,3 +17,8 @@ export const setFavorites = (favorites) => ({
 	type: 'SET_FAVORITES',
 	favorites
 })
+
+export const toggleFavorite = (id) => ({
+	type: 'TOGGLE_FAVORITE',
+	id
+})
