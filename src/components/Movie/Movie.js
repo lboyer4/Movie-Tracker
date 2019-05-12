@@ -23,7 +23,24 @@ class Movie extends Component {
 			this.postFavoriteMovie()
 		} else if (this.props.favorited === true) {
 			this.props.toggleFavorite(this.props.movie_id)
+			this.deleteFavoriteMovie(this.props.movie_id)
 		}
+	}
+
+	deleteFavoriteMovie = (movie_id) => {
+		const { id } = this.props.loggedIn
+		const url = `http://localhost:3000/api/users/${id}/favorites/${movie_id}`
+		const options = {
+			method: 'DELETE',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				id,
+				movie_id
+			})
+		}
+		fetch(url, options)
 	}
 
 	postFavoriteMovie = () => {
