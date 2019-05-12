@@ -1,27 +1,49 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchUsers } from '../../utils/fetchUsers';
+import { fetchMovie } from '../../utils/fetchMovie';
+import { toggleFavorite } from '../../actions';
 
 class Movie extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			createAccountMsg: ''
+			createAccountMsg: '',
+			currentMovieId: 0
 		}
 	}
 
 	handleClick = () => {
 		if (!this.props.loggedIn.id)  {
 			this.setState({createAccountMsg: 'please create an account'})
-		} else {
+		} else if(this.props.favorited === false) {
+			this.props.toggleFavorite(this.props.movie_id)
 			this.postFavoriteMovie()
+		} else if (this.props.favorited === true) {
+			this.props.toggleFavorite(this.props.movie_id)
+			this.deleteFavoriteMovie(this.props.movie_id)
 		}
+	}
+
+	deleteFavoriteMovie = (movie_id) => {
+		const { id } = this.props.loggedIn
+		const url = `http://localhost:3000/api/users/${id}/favorites/${movie_id}`
+		const options = {
+			method: 'DELETE',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				id,
+				movie_id
+			})
+		}
+		fetch(url, options)
 	}
 
 	postFavoriteMovie = () => {
 		const url = 'http://localhost:3000/api/users/favorites/new';
 		const { movie_id, title, poster_path, release_date, vote_average, overview } = this.props
-		console.log(this.props)
 		const user_id = this.props.loggedIn.id
 		const options = { 
 			method: 'POST',
@@ -42,6 +64,9 @@ class Movie extends Component {
 	}
 
 	render() {
+		let trueMessage = <h4>Delete Favorite</h4>
+		let falseMessage = <h4>Favorite</h4>
+		let toggleMessage = this.props.favorited ? trueMessage : falseMessage
 		let message = <h1>{this.state.createAccountMsg}</h1>
 	  return(
 	    <section className='card'>
@@ -50,7 +75,7 @@ class Movie extends Component {
 	        <img src={this.props.poster_path} />
 	        <p className='movie-overview'>{this.props.overview}</p>
 	        {message}
-	        <button onClick={this.handleClick} className='fav-btn'> Favorite </button>
+	        <button onClick={this.handleClick} className='fav-btn'> {toggleMessage} </button>
 	      </section>
 	    </section>
 	  )
@@ -58,7 +83,12 @@ class Movie extends Component {
 }
 
 const mapStateToProps = (state) => ({
-	loggedIn: state.loggedIn
+	loggedIn: state.loggedIn,
+	favorites: state.favorites
 })
 
-export default connect(mapStateToProps)(Movie)
+const mapDispatchToProps = (dispatch) => ({
+	toggleFavorite: (id) => dispatch(toggleFavorite(id))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Movie)

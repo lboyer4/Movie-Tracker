@@ -5,6 +5,8 @@ import { updateLogin } from '../../actions';
 import './Login.scss';
 import MovieContainer from './../MovieContainer/MovieContainer';
 import { Route, Redirect, Link } from 'react-router-dom';
+import { setFavorites } from '../../actions';
+import { fetchMovie } from '../../utils/fetchMovie';
 
 class Login extends Component {
 	constructor() {
@@ -51,8 +53,15 @@ class Login extends Component {
 				this.props.updateLogin(
 					results.data
 					)
+					this.fetchCurrentMovies(results.data.id)
 			}
 		})
+	}
+
+	fetchCurrentMovies = (id) => {
+		const url = `http://localhost:3000/api/users/${id}/favorites`
+		const currentMovie = fetchMovie(url)
+		.then(results => this.props.setFavorites(results.data))
 	}
 
 
@@ -97,7 +106,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-	updateLogin: (user) => dispatch(updateLogin(user))
+	updateLogin: (user) => dispatch(updateLogin(user)),
+	setFavorites: (favorites) => dispatch(setFavorites(favorites))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login)
