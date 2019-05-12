@@ -66,6 +66,9 @@ class Movie extends Component {
 	}
 
 	render() {
+		let trueMessage = <h4>Delete Favorite</h4>
+		let falseMessage = <h4>Favorite</h4>
+		let toggleMessage = this.props.favorited ? trueMessage : falseMessage
 		let message = <h1>{this.state.createAccountMsg}</h1>
 	  return(
 	    <section className='card'>
@@ -74,7 +77,7 @@ class Movie extends Component {
 	        <img src={this.props.poster_path} />
 	        <p className='movie-overview'>{this.props.overview}</p>
 	        {message}
-	        <button onClick={this.handleClick} className='fav-btn'> Favorite </button>
+	        <button onClick={this.handleClick} className='fav-btn'> {toggleMessage} </button>
 	      </section>
 	    </section>
 	  )
