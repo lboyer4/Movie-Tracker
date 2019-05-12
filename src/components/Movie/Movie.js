@@ -14,12 +14,10 @@ class Movie extends Component {
 	}
 
 	handleClick = () => {
-		console.log('movieId', this.props.movie_id)
 		if (!this.props.loggedIn.id)  {
 			this.setState({createAccountMsg: 'please create an account'})
 		} else if(this.props.favorited === false) {
 			this.props.toggleFavorite(this.props.movie_id)
-			console.log('hi')
 			this.postFavoriteMovie()
 		} else if (this.props.favorited === true) {
 			this.props.toggleFavorite(this.props.movie_id)

@@ -12,7 +12,6 @@ const Header = (props) => {
 	let logUserIn = <button className='login btn'><NavLink to='/login' className="nav"> Login </NavLink></button>
 		toggleLogin = props.loggedIn.id ? logUserOut : logUserIn 
 		let viewFavorites = <button className='view-fave btn'><NavLink to='/favorites' className="nav"> View Favorites </NavLink></button>
-		console.log('loggedin', props.loggedIn.id)
 		return (
 			<header>
 				<h1 className='title'> Movie Tracker </h1>
