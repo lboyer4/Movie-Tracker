@@ -4,6 +4,7 @@ import Movie from '../../components/Movie/Movie';
 
 const MovieContainer = (props) => {
   const image = props.movies.map(movie => {
+    console.log(movie)
     return <Movie {...movie}/>
   })
   return(
