@@ -4,9 +4,9 @@ export const addMovies = (state = initialState, action) => {
 	switch(action.type) {
 		case 'ADD_MOVIES':
 			return action.movies
-		case 'TOGGLE_MOVIES':
+		case 'TOGGLE_FAVORITE':
 		return state.map(movie => {
-			if(movie.id === action.id) {
+			if(movie.movie_id === action.id) {
 				const favorited = !movie.favorited
 				return {...movie, favorited}
 			} else {
