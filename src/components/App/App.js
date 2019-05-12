@@ -11,6 +11,7 @@ import Header  from '../Header/Header';
 import  Login  from '../../containers/Login/Login';
 import Signup from '../../containers/Signup/Signup';
 import Home from '../Home/Home';
+import FavoriteContainer from '../../containers/FavoriteContainer/FavoriteContainer';
 class App extends Component {
   constructor() {
     super();
@@ -47,6 +48,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Route exact path='/favorites' component= { FavoriteContainer } />
         <Route exact path="/" component= { Header  } />     
         <Route exact path="/" component= { MovieContainer }/>
         <Route exact path="/login" component={ Login } />
