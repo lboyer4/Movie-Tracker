@@ -8,7 +8,6 @@ import { logOut } from '../../actions';
 
 const Header = (props) => {
 	let toggleLogin;
-	console.log('props', props.loggedIn.id)
 	let logUserOut = <button className='logout btn' onClick={ logOut({}) }> <NavLink to='/login' className="nav"> Logout </NavLink></button>
 	let logUserIn = <button className='login btn'><NavLink to='/login' className="nav"> Login </NavLink></button>
 		toggleLogin = props.loggedIn.id ? logUserOut : logUserIn 

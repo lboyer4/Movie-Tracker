@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchUsers } from '../../utils/fetchUsers';
+import { fetchMovie } from '../../utils/fetchMovie';
 
 class Movie extends Component {
 	constructor(props) {
@@ -14,14 +15,19 @@ class Movie extends Component {
 		if (!this.props.loggedIn.id)  {
 			this.setState({createAccountMsg: 'please create an account'})
 		} else {
-			this.postFavoriteMovie()
+			this.checkFavoriteMovie(this.props.loggedIn.id)
 		}
+	}
+
+	checkFavoriteMovie = (id) => {
+		const url = `http://localhost:3000/api/users/${id}/favorites`
+		const currentMovie = fetchMovie(url)
+		console.log(currentMovie)
 	}
 
 	postFavoriteMovie = () => {
 		const url = 'http://localhost:3000/api/users/favorites/new';
 		const { movie_id, title, poster_path, release_date, vote_average, overview } = this.props
-		console.log(this.props)
 		const user_id = this.props.loggedIn.id
 		const options = { 
 			method: 'POST',
