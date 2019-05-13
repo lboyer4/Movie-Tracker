@@ -11,7 +11,7 @@ const FavoriteContainer = (props) => {
   return(
     <section className='main'>
       <section className='image-container'>
-      {image}
+        {image}
       </section>
     </section>
   )
