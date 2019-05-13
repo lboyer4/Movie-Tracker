@@ -1,19 +1,19 @@
 .signin-form {
 	height: 17rem;
 	width: 30rem;
-	border: .1rem solid hsl(14, 90%, 44%);
+	border: .1rem solid $signin-color;
 	border-radius: .2rem;
 	margin: auto;
 	margin-top: 2rem;
 	text-align: center;
-	background-color: hsl(62, 82.6%, 82%);
-	color: hsl(14, 90%, 44%);
+	background-color: $signin-bkgrd;
+	color: $signin-color;
 	opacity: 0.9;
 }
 
 .login-header {
-	background-color: hsl(14, 90%, 44%);
-	color: hsl(62, 82.6%, 82%);
+	background-color: $login-bkgrd;
+	color: $login-header-color;
 	height: 3rem;
 }
 
@@ -26,11 +26,12 @@
 	height: 2rem;
 	width: 13rem;
 	border-radius: .2rem;
+	cursor: pointer;
 }
 
 .submit-btn:hover {
-	background-color: hsl(14, 90%, 44%);
-	color: hsl(61, 90%, 70%);
+	background-color: $submit-bkgrd-hover;
+	color: $submit-button-hover;
 }
 
 .email-input {
@@ -38,7 +39,7 @@
 }
 
 .error-msg {
-	color: red;
+	color: $error-msg-color;
 	margin: 0;
 }
 
