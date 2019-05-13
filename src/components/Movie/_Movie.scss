@@ -1,26 +1,44 @@
-.movie-title {
-  font-family: $movie-title-font;
-  color: $movie-title-color;
-  letter-spacing: .1rem;
-}
 
 .movie-overview {
   color: $overview-color;
 }
 
 .card {
-  margin: auto;
+  margin: 30px;
   max-width: 19rem;
   border-radius: 2rem;
+  opacity: 1;
+}
+
+img {
+  opacity: 0.9;
+  border-radius: 1rem;
+}
+
+img:hover {
+  opacity: 1;
+}
+.card:hover {
+  cursor: pointer;
+  transform: scale(1.04);
+  transform: rotate(2deg);
+  transition: all ease-in-out .3s;
+  height: 20rem;
 }
 
 .fav-btn {
+  background-color: transparent;
+  border: 2px solid $header-color;
+  color: $header-color;
+  margin-top: 1rem;
   border-radius: .8rem;
   font-size: 1.6rem;
   cursor: pointer;
   width: 17.8rem;
+  height: 3rem;
   &:hover {
-    background-color: hsl(55, 95%, 47%);
+    background-color: $header-color;
+    color: $link-hover-color;
     border: none;
   }
 }
@@ -29,3 +47,11 @@
   color: hsl(0, 100%, 50%);
   font-size: 1.5rem;
 }
+
+.toggle-msg {
+  font-size: 2rem;
+  margin: 0;
+}
+
+
+

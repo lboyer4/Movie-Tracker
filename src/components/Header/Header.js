@@ -1,8 +1,5 @@
 import React from 'react';
-import { Route, NavLink } from 'react-router-dom';
-import  Login  from '../../containers/Login/Login';
-import Signup from '../../containers/Signup/Signup';
-import Home from '../Home/Home';
+import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logOut } from '../../actions';
 

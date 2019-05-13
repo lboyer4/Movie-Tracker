@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './_App.scss';
 import '../../index.scss';
-import { Route, Switch, NavLink } from 'react-router-dom';
+import { Route} from 'react-router-dom';
 import { apikey } from '../../utils/apikey';
 import { fetchMovie } from '../../utils/fetchMovie.js';
 import { addMovies } from '../../actions'
@@ -10,7 +10,6 @@ import MovieContainer from '../../containers/MovieContainer/MovieContainer';
 import Header  from '../Header/Header';
 import  Login  from '../../containers/Login/Login';
 import Signup from '../../containers/Signup/Signup';
-import Home from '../Home/Home';
 import FavoriteContainer from '../../containers/FavoriteContainer/FavoriteContainer';
 import MovieDetails from '../MovieDetails/MovieDetails'
 
@@ -24,7 +23,7 @@ class App extends Component {
 
   componentDidMount = () => {
     const url = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apikey}&language=en-US&page=1`;
-    let movies = fetchMovie(url)
+   fetchMovie(url)
     .then(results => this.makeMovies(results.results)
     ) 
   }
@@ -58,15 +57,15 @@ class App extends Component {
         <Route exact path="/login" component={ Login } />
         <Route exact path="/signup" component={ Signup } />
         <Route path='/movies/:id' render={({ match }) => {
-          // console.log(match.params)
-          const { id } = match.params
+        
+  
           const selectedMovie = this.props.movies.find(movie => {
-            console.log(parseInt(match.params.id))
+            
             return movie.movie_id === parseInt(match.params.id)
            }) 
-          console.log('before if', selectedMovie)
+         
           if (selectedMovie) {
-            console.log('after if', selectedMovie)            
+                       
             return <MovieDetails {...selectedMovie} />
             }
           
