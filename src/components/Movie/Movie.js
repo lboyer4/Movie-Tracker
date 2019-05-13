@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchUsers } from '../../utils/fetchUsers';
-import { fetchMovie } from '../../utils/fetchMovie';
 import { toggleFavorite } from '../../actions';
 import { Route, Link } from 'react-router-dom';
 import MovieDetails from '../MovieDetails/MovieDetails';
@@ -70,16 +69,24 @@ class Movie extends Component {
 		let trueMessage = <h4>Delete Favorite</h4>
 		let falseMessage = <h4>Favorite</h4>
 		let toggleMessage = this.props.favorited ? trueMessage : falseMessage
-		let message = <h1 className = 'login-msg'>{this.state.createAccountMsg}</h1>
+		let message = 
+		<h1 className = 'login-msg'>{this.state.createAccountMsg}</h1>
 	  return(
 	    <section className='card'>
 	      <section className='movie-info-wrapper'>
 	        <h2 className='movie-title'>{this.props.title}</h2>
-	        <Link to={`/movies/${movieId}`}><img src={this.props.poster_path} alt='movie poster'/>
+					<Link to=
+						{`/movies/${movieId}`}>
+						<img src={this.props.poster_path} alt='movie poster'/>
 					</Link> 
-					<Route exact path={`/movies/${movieId}`} component= { MovieDetails } />
-	        	{message}
-	        <button onClick={this.handleClick} className='fav-btn'> {toggleMessage} </button>
+					<Route exact path=
+						{`/movies/${movieId}`} 
+						component= { MovieDetails } 
+					/>
+	        {message}
+					<button onClick={this.handleClick} className='fav-btn'> 
+						{toggleMessage} 
+					</button>
 	      </section>
 	    </section>
 	  )

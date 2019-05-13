@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { fetchUsers } from '../../utils/fetchUsers';
 import { connect } from 'react-redux';
 import { updateLogin } from '../../actions';
-import './Login.scss';
-import MovieContainer from './../MovieContainer/MovieContainer';
-import { Route, Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { setFavorites } from '../../actions';
 import { fetchMovie } from '../../utils/fetchMovie';
 
@@ -64,9 +62,7 @@ class Login extends Component {
 		.then(results => this.props.setFavorites(results.data))
 	}
 
-
 	render() {
-
 		if(this.state.loggedIn) {
 			return ( 
 				<Redirect to="/" />
@@ -93,9 +89,7 @@ class Login extends Component {
 					value={this.state.password} 
 					onChange={this.handleChange}
 				/>
-
 				<button className="submit-btn"> Submit </button>
-
 			</form>
 			)
 	}

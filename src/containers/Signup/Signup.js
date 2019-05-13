@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { fetchUsers } from '../../utils/fetchUsers';
-import './_Signup.scss'
 
 export default class Signup extends Component {
 	constructor() {
@@ -15,7 +14,7 @@ export default class Signup extends Component {
 
 	handleChange = (e) => {
 		const { name, value } = e.target;
-		this.setState({ [name] : value })
+		this.setState({ [name]: value })
 	}
 
 	handleSubmit = (e) => {
@@ -41,19 +40,19 @@ export default class Signup extends Component {
 		const newUser = fetchUsers(url, options)
 		.then(results => {
 			if (results === 'error') {
-			this.setState({error: '*Email has already been used, try again.'})
+				this.setState({
+					error: '*Email has already been used, try again.'
+				})
 			}
 		})
-		
 	}
 
 	render() {
 		return (
-
 			<form className="submit-form" onSubmit = {this.handleSubmit}>
-			<div className="create-header">
-				<h1 className="form-title"> Create Account </h1> 
-			</div>
+				<div className="create-header">
+					<h1 className="form-title"> Create Account </h1> 
+				</div>
 				<h3 className="error-msg"> {this.state.error} </h3>
 				<input 
 					className="name"
@@ -77,7 +76,6 @@ export default class Signup extends Component {
 					value={this.state.password} 
 					onChange={this.handleChange}
 				/>
-
 				<button className="submit-btn"> Submit </button>
 			</form>
 		)

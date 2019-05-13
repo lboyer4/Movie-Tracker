@@ -5,10 +5,10 @@ export const addMovies = (state = initialState, action) => {
 		case 'ADD_MOVIES':
 			return action.movies
 		case 'TOGGLE_FAVORITE':
-		return state.map(movie => {
-			if(movie.movie_id === action.id) {
-				const favorited = !movie.favorited
-				return {...movie, favorited}
+			return state.map(movie => {
+				if(movie.movie_id === action.id) {
+					const favorited = !movie.favorited
+					return { ...movie, favorited }
 			} else {
 				return movie
 			}

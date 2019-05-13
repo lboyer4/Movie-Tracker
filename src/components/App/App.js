@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import './_App.scss';
 import '../../index.scss';
-import { Route, Switch, NavLink } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { apikey } from '../../utils/apikey';
 import { fetchMovie } from '../../utils/fetchMovie.js';
 import { addMovies } from '../../actions'
 import { connect } from 'react-redux';
 import MovieContainer from '../../containers/MovieContainer/MovieContainer';
-import Header  from '../Header/Header';
-import  Login  from '../../containers/Login/Login';
+import Header from '../Header/Header';
+import Login from '../../containers/Login/Login';
 import Signup from '../../containers/Signup/Signup';
-import Home from '../Home/Home';
 import FavoriteContainer from '../../containers/FavoriteContainer/FavoriteContainer';
 import MovieDetails from '../MovieDetails/MovieDetails'
 
@@ -28,7 +27,6 @@ class App extends Component {
     .then(results => this.makeMovies(results.results)
     ) 
   }
-
 
   makeMovies = (results) => {
     results = results.map(movie => {
@@ -48,24 +46,19 @@ class App extends Component {
   }
 
   render() {
-    console.log(this.props.movies)
     return (
-      <div className="App">
+      <div className='App'>
         <Route exact path='/favorites' component= { FavoriteContainer } />
-        <Route exact path="/" component= { Header  } />     
-        <Route exact path="/" component= { MovieContainer }/>
-        <Route exact path="/login" component={ Login } />
-        <Route exact path="/signup" component={ Signup } />
+        <Route exact path='/' component= { Header  } />     
+        <Route exact path='/' component= { MovieContainer }/>
+        <Route exact path='/login' component={ Login } />
+        <Route exact path='/signup' component={ Signup } />
         <Route path='/movies/:id' render={({ match }) => {
-          // console.log(match.params)
           const { id } = match.params
           const selectedMovie = this.props.movies.find(movie => {
-            console.log(parseInt(match.params.id))
             return movie.movie_id === parseInt(match.params.id)
            }) 
-          console.log('before if', selectedMovie)
-          if (selectedMovie) {
-            console.log('after if', selectedMovie)            
+          if (selectedMovie) {         
             return <MovieDetails {...selectedMovie} />
             }
           
