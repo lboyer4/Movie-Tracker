@@ -66,8 +66,8 @@ class Movie extends Component {
 
 	render() {
 		let movieId = this.props.movie_id
-		let trueMessage = <h4 className='toggle-msg'> Favorite</h4>
-		let falseMessage = <h4 className='toggle-msg'>Make Favorite</h4>
+		let trueMessage = <h4 className='toggle-msg'> Remove Favorite </h4>
+		let falseMessage = <h4 className='toggle-msg'> Favorite </h4>
 		let toggleMessage = this.props.favorited ? trueMessage : falseMessage
 		let message = <h3 className='login-msg'>{this.state.createAccountMsg}</h3>
 	  return(
