@@ -1,7 +1,7 @@
 import React from 'react';
-import Movie from './Movie.js';
+import { Movie, mapsDispatchToProps, mapStateToProps from './Movie';
 import { shallow } from 'enzyme';
-// import configureStore from 'redux-mock-store';
+
 
 describe('Movie', () => {
 	let wrapper;

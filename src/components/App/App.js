@@ -48,6 +48,7 @@ class App extends Component {
   }
 
   render() {
+    console.log(this.props.movies)
     return (
       <div className="App">
         <Route exact path='/favorites' component= { FavoriteContainer } />
@@ -55,6 +56,21 @@ class App extends Component {
         <Route exact path="/" component= { MovieContainer }/>
         <Route exact path="/login" component={ Login } />
         <Route exact path="/signup" component={ Signup } />
+        <Route path='/movies/:id' render={({ match }) => {
+          // console.log(match.params)
+          const { id } = match.params
+          const selectedMovie = this.props.movies.find(movie => {
+            console.log(parseInt(match.params.id))
+            return movie.movie_id === parseInt(match.params.id)
+           }) 
+          console.log('before if', selectedMovie)
+          if (selectedMovie) {
+            console.log('after if', selectedMovie)            
+            return <MovieDetails {...selectedMovie} />
+            }
+          
+        }}
+        />
       </div>
     );
   }

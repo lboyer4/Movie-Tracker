@@ -75,7 +75,7 @@ class Movie extends Component {
 	    <section className='card'>
 	      <section className='movie-info-wrapper'>
 	        <h2 className='movie-title'>{this.props.title}</h2>
-	        <Link to={`/movies/${movieId}`}><img src={this.props.poster_path} />
+	        <Link to={`/movies/${movieId}`}><img src={this.props.poster_path} alt='movie poster'/>
 					</Link> 
 					<Route exact path={`/movies/${movieId}`} component= { MovieDetails } />
 	        	{message}
