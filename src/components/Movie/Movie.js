@@ -66,13 +66,12 @@ class Movie extends Component {
 
 	render() {
 		let movieId = this.props.movie_id
-		let trueMessage = <h4>Delete Favorite</h4>
-		let falseMessage = <h4>Favorite</h4>
+		let trueMessage = <h4 className='toggle-msg'> Favorite</h4>
+		let falseMessage = <h4 className='toggle-msg'>Make Favorite</h4>
 		let toggleMessage = this.props.favorited ? trueMessage : falseMessage
-		let message = 
-		<h1 className = 'login-msg'>{this.state.createAccountMsg}</h1>
+		let message = <h3 className='login-msg'>{this.state.createAccountMsg}</h3>
 	  return(
-	    <section className='card'>
+	    <section className='card'>    	
 	      <section className='movie-info-wrapper'>
 	        <h2 className='movie-title'>{this.props.title}</h2>
 					<Link to=
@@ -88,6 +87,7 @@ class Movie extends Component {
 						{toggleMessage} 
 					</button>
 	      </section>
+	      {message}
 	    </section>
 	  )
 	}

@@ -23,7 +23,7 @@ class App extends Component {
 
   componentDidMount = () => {
     const url = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apikey}&language=en-US&page=1`;
-    let movies = fetchMovie(url)
+   fetchMovie(url)
     .then(results => this.makeMovies(results.results)
     ) 
   }
@@ -37,7 +37,8 @@ class App extends Component {
         title: movie.title,
         poster_path: 'https://image.tmdb.org/t/p/w300_and_h450_bestv2/' + movie.poster_path,
         overview: movie.overview,
-        favorited: false
+        favorited: false,
+        key: movie.id
       }
     })
     this.props.addMovies(
@@ -61,7 +62,6 @@ class App extends Component {
           if (selectedMovie) {         
             return <MovieDetails {...selectedMovie} />
             }
-          
         }}
         />
       </div>
