@@ -73,7 +73,6 @@ class Movie extends Component {
 	  return(
 	    <section className='card'>    	
 	      <section className='movie-info-wrapper'>
-	        <h2 className='movie-title'>{this.props.title}</h2>
 					<Link to=
 						{`/movies/${movieId}`}>
 						<img src={this.props.poster_path} alt='movie poster'/>
@@ -82,7 +81,6 @@ class Movie extends Component {
 						{`/movies/${movieId}`} 
 						component= { MovieDetails } 
 					/>
-	        {message}
 					<button onClick={this.handleClick} className='fav-btn'> 
 						{toggleMessage} 
 					</button>
