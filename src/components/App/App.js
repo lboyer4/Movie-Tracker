@@ -39,7 +39,8 @@ class App extends Component {
         title: movie.title,
         poster_path: 'https://image.tmdb.org/t/p/w300_and_h450_bestv2/' + movie.poster_path,
         overview: movie.overview,
-        favorited: false
+        favorited: false,
+        key: movie.id
       }
     })
     this.props.addMovies(
