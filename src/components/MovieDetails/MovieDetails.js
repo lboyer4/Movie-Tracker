@@ -1,4 +1,5 @@
 import React from 'react';
+import './_MovieDetails.scss';
 
 const MovieDetails = ({ movie_id, title, poster_path, release_date, vote_average, overview }) => {
 	console.log(title)
@@ -9,9 +10,9 @@ const MovieDetails = ({ movie_id, title, poster_path, release_date, vote_average
 			</div>
 			<div className="right">
 				<h1>{title}</h1>
-				<h5>{release_date}</h5>
+				<h5>Release Date: {release_date}</h5>
 				<p> {overview} </p>
-				<h6> {vote_average}</h6>
+				<h6> Vote Average: {vote_average}</h6>
 			</div>
 		</article>
 
