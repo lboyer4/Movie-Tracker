@@ -2,10 +2,8 @@ import React, { Component } from 'react';
 import { fetchUsers } from '../../utils/fetchUsers';
 import { connect } from 'react-redux';
 import { updateLogin } from '../../actions';
-import './Login.scss';
 import { Redirect } from 'react-router-dom';
 import { setFavorites } from '../../actions';
-// import { fetchMovie } from '../../utils/fetchMovie';
 
 class Login extends Component {
 	constructor() {
@@ -51,21 +49,12 @@ class Login extends Component {
 				this.setState({ loggedIn: true })
 				this.props.updateLogin(
 					results.data
-					)
-					// this.fetchCurrentMovies(results.data.id)
+          )
 			}
 		})
 	}
 
-	// fetchCurrentMovies = (id) => {
-	// 	const url = `http://localhost:3000/api/users/${id}/favorites`
-	// 	const currentMovie = fetchMovie(url)
-	// 	.then(results => this.props.setFavorites(results.data))
-	// }
-
-
 	render() {
-
 		if(this.state.loggedIn) {
 			return ( 
 				<Redirect to="/" />
@@ -92,9 +81,7 @@ class Login extends Component {
 					value={this.state.password} 
 					onChange={this.handleChange}
 				/>
-
 				<button className="submit-btn"> Submit </button>
-
 			</form>
 			)
 	}

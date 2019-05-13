@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchUsers } from '../../utils/fetchUsers';
-import { fetchMovie } from '../../utils/fetchMovie';
 import { toggleFavorite } from '../../actions';
 import { Route, Link } from 'react-router-dom';
 import MovieDetails from '../MovieDetails/MovieDetails';
@@ -72,13 +71,21 @@ class Movie extends Component {
 		let toggleMessage = this.props.favorited ? trueMessage : falseMessage
 		let message = <h3 className='login-msg'>{this.state.createAccountMsg}</h3>
 	  return(
-	    <section className='card'>
-	        	
+	    <section className='card'>    	
 	      <section className='movie-info-wrapper'>
-	        <Link to={`/movies/${movieId}`}><img src={this.props.poster_path} alt='movie poster'/>
+	        <h2 className='movie-title'>{this.props.title}</h2>
+					<Link to=
+						{`/movies/${movieId}`}>
+						<img src={this.props.poster_path} alt='movie poster'/>
 					</Link> 
-					<Route exact path={`/movies/${movieId}`} component= { MovieDetails } />
-	        <button onClick={this.handleClick} className='fav-btn'> {toggleMessage} </button>
+					<Route exact path=
+						{`/movies/${movieId}`} 
+						component= { MovieDetails } 
+					/>
+	        {message}
+					<button onClick={this.handleClick} className='fav-btn'> 
+						{toggleMessage} 
+					</button>
 	      </section>
 	      {message}
 	    </section>

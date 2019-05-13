@@ -1,7 +1,6 @@
 import React from 'react';
 import './_MovieDetails.scss';
 
-
 const MovieDetails = ({ movie_id, title, poster_path, release_date, vote_average, overview, favorited}) => {
 	console.log(favorited)
 	return (
@@ -16,7 +15,6 @@ const MovieDetails = ({ movie_id, title, poster_path, release_date, vote_average
 				<h6> Vote Average: {vote_average}</h6>
 			</div>
 		</article>
-
 	)
 }
 
