@@ -10,7 +10,6 @@ import MovieContainer from '../../containers/MovieContainer/MovieContainer';
 import Header from '../Header/Header';
 import Login from '../../containers/Login/Login';
 import Signup from '../../containers/Signup/Signup';
-import Home from '../Home/Home';
 import FavoriteContainer from '../../containers/FavoriteContainer/FavoriteContainer';
 import MovieDetails from '../MovieDetails/MovieDetails'
 
@@ -48,12 +47,12 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className='App'>
         <Route exact path='/favorites' component= { FavoriteContainer } />
-        <Route exact path="/" component= { Header  } />     
-        <Route exact path="/" component= { MovieContainer }/>
-        <Route exact path="/login" component={ Login } />
-        <Route exact path="/signup" component={ Signup } />
+        <Route exact path='/' component= { Header  } />     
+        <Route exact path='/' component= { MovieContainer }/>
+        <Route exact path='/login' component={ Login } />
+        <Route exact path='/signup' component={ Signup } />
         <Route path='/movies/:id' render={({ match }) => {
           const { id } = match.params
           const selectedMovie = this.props.movies.find(movie => {
