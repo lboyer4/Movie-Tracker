@@ -3,6 +3,7 @@
 @import './containers/MovieContainer/MovieContainer.scss';
 @import './components/Movie/Movie';
 @import './containers/Login/Login.scss';
+@import './containers/Signup/Signup.scss';
 
 body, html {
   background: linear-gradient( rgba(0, 0, 0, 0.82), rgba(0, 0, 0, 0.82) ), url('./theater-seats.jpg');
