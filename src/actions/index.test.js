@@ -1,5 +1,5 @@
 import * as actions from './index';
-import { mockUser } from '../utils/mockData';
+import { mockUser, mockFavorites } from '../utils/mockData';
 
 describe('actions', () => {
 	it('should return movies with a type of ADD_MOVIES', () => {
@@ -35,6 +35,29 @@ describe('actions', () => {
 
 		expect(result).toEqual(expected)
 	});
+
+		it('should return all favorites with a type of SET_FAVORITES', () => {
+
+			const expected = {
+				type: 'SET_FAVORITES',
+				favorites: mockFavorites
+			};
+			const result = actions.setFavorites(mockFavorites);
+
+			expect(result).toEqual(expected)
+	});
+
+		it('should return id with a type of TOGGLE_FAVORITE', () => {
+
+			const expected = {
+				type: 'TOGGLE_FAVORITE',
+				id: 2
+			};
+			const result = actions.toggleFavorite(2);
+
+			expect(result).toEqual(expected)
+	});
+
 
 });
 
