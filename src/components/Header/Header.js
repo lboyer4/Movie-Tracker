@@ -1,14 +1,12 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import  Login  from '../../containers/Login/Login';
-import Signup from '../../containers/Signup/Signup';
 import { connect } from 'react-redux';
 import { logOut } from '../../actions';
 
 const Header = (props) => {
 	let toggleLogin;
 	let logUserOut = 
-		<button className='logout btn' onClick={ logOut({}) }> 		
+		<button className='logout btn' onClick={ props.loggedOut }> 		
 			<NavLink to='/login' className="nav"> Logout </NavLink>
 		</button>
 	let logUserIn = 

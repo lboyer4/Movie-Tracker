@@ -61,7 +61,7 @@ class Movie extends Component {
 				overview 
 			})
 		}
-		const favoriteMovie = fetchUsers(url, options)
+		fetchUsers(url, options)
 	}
 
 	render() {

@@ -8,9 +8,8 @@ export const updateLogin = (user) => ({
 	user
 })
 
-export const logOut = (user) => ({
-	type: 'LOGGED_OUT',
-	user
+export const logOut = () => ({
+	type: 'LOGGED_OUT'
 })
 
 export const setFavorites = (favorites) => ({

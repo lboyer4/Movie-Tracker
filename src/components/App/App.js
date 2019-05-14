@@ -55,7 +55,6 @@ class App extends Component {
         <Route exact path='/login' component={ Login } />
         <Route exact path='/signup' component={ Signup } />
         <Route path='/movies/:id' render={({ match }) => {
-          const { id } = match.params
           const selectedMovie = this.props.movies.find(movie => {
             return movie.movie_id === parseInt(match.params.id)
            }) 
