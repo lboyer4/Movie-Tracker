@@ -5,7 +5,7 @@ export const updateLogin = (state = initialState, action) => {
     case 'LOGGED_IN':
     return action.user;
     case 'LOGGED_OUT':
-    return action.user;
+    return {};
     default:
     return state
   }

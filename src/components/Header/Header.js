@@ -6,7 +6,7 @@ import { logOut } from '../../actions';
 const Header = (props) => {
 	let toggleLogin;
 	let logUserOut = 
-		<button className='logout btn' onClick={ logOut({}) }> 		
+		<button className='logout btn' onClick={ props.loggedOut }> 		
 			<NavLink to='/login' className="nav"> Logout </NavLink>
 		</button>
 	let logUserIn = 
