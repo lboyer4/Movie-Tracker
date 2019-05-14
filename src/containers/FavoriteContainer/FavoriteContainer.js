@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Movie from '../../components/Movie/Movie';
 
-const FavoriteContainer = (props) => {
+export const FavoriteContainer = (props) => {
   const image = props.movies.map(movie => {
     if(movie.favorited) {
       return <Movie {...movie}/>
@@ -17,7 +17,7 @@ const FavoriteContainer = (props) => {
   )
 }
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   movies: state.movies
 })
 
