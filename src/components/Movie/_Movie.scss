@@ -8,22 +8,21 @@
   max-width: 19rem;
   border-radius: 2rem;
   opacity: 1;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.04);
+    transform: rotate(2deg);
+    transition: all ease-in-out .3s;
+    height: 20rem;
+  }
 }
 
 img {
   opacity: 0.9;
   border-radius: 1rem;
-}
-
-img:hover {
-  opacity: 1;
-}
-.card:hover {
-  cursor: pointer;
-  transform: scale(1.04);
-  transform: rotate(2deg);
-  transition: all ease-in-out .3s;
-  height: 20rem;
+  &:hover {
+    opacity: 1;
+  }
 }
 
 .fav-btn {
@@ -41,6 +40,8 @@ img:hover {
     background-color: $header-color;
     color: $link-hover-color;
     border: none;
+    opacity: 0.7;
+    transition: 0.4s;
   }
 }
 
