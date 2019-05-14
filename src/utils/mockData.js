@@ -16,6 +16,16 @@ export const mockSelectedMovie = {
 	vote_average: 7.1
 }
 
+export const mockUncleanMovie = {
+	id: 447404,
+	overview: "In a world where people collect pocket-size monsters (Pokémon) to do battle, a boy comes across an intelligent monster who seeks to be a detective.",
+	poster_path: "/wgQ7APnFpf1TuviKHXeEe3KnsTV.jpg",
+	release_date: "2019-05-03",
+	title: "Pokémon Detective Pikachu",
+	vote_average: 7.1,
+	extraProp: 8888
+}
+
 export const mockFavorites = [
 	{
 		favorited: true,
