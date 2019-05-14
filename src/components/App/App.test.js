@@ -4,10 +4,9 @@ import { App, mapStateToProps, mapDispatchToProps } from './App';
 import { mockUncleanMovie } from '../../utils/mockdata';
 import {cleanMovies} from '../../utils/cleaners';
 import { addMovies } from '../../actions'
-// import { fetchMovie } from '../../utils/fetchMovie';
 
 jest.mock('../../utils/cleaners');
-// jest.mock('../../utils/fetchMovie')
+
 const mockCleanMovies = jest.fn();
 const mockMakeMovies = jest.fn();
 
