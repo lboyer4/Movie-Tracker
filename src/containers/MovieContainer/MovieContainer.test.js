@@ -9,9 +9,7 @@ describe('MovieContainer', () => {
   it('should match snapshot', () => {
     const wrapper = shallow(
       <MovieContainer 
-      movies={ [mockSelectedMovie]
-      
-      }/>
+      movies={ [mockSelectedMovie] }/>
     )
     expect(wrapper).toMatchSnapshot();
   });
