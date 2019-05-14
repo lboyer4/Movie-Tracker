@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Movie from '../../components/Movie/Movie';
 
-const MovieContainer = (props) => {
+export const MovieContainer = (props) => {
   const image = props.movies.map(movie => {
     return <Movie {...movie}/>
   })
@@ -15,7 +15,7 @@ const MovieContainer = (props) => {
   )
 }
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   movies: state.movies
 })
 
