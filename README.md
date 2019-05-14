@@ -25,6 +25,11 @@ npm test
 
 ## Wireframes and photos of project:
 
+![20190506_164952](https://user-images.githubusercontent.com/40863560/57661952-67ed3600-75aa-11e9-8c9c-f6395d3d893c.jpg)
+
+![IMG_5105](https://user-images.githubusercontent.com/40863560/57661995-95d27a80-75aa-11e9-8e02-7fced5cb78ce.JPG)
+
+![2019-05-13 18 06 18](https://user-images.githubusercontent.com/40863560/57661878-ff9e5480-75a9-11e9-8da7-b65f6bcce694.gif)
 
 
 ## Technologies used:
