@@ -37,7 +37,7 @@ export default class Signup extends Component {
 					password
 			})
 		}
-		const newUser = fetchUsers(url, options)
+		fetchUsers(url, options)
 		.then(results => {
 			if (results === 'error') {
 				this.setState({
