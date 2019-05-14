@@ -1,6 +1,7 @@
 import React from 'react';
-import { Movie, mapsDispatchToProps, mapStateToProps } from './Movie';
+import { Movie, mapStateToProps,mapDispatchToProps,  } from './Movie';
 import { shallow } from 'enzyme';
+import { toggleFavorite } from '../../actions';
 
 
 describe('Movie', () => {
@@ -24,7 +25,42 @@ describe('Movie', () => {
 		)
 	})
 
-	it.skip('should match snapshot', () => {
+	it('should match snapshot', () => {
 		expect(wrapper).toMatchSnapshot();
 	});
+
+		describe('mapStateToProps', () => {
+
+		it('should return a user object and a favorites array', () => {
+
+			const mockState = {
+				loggedIn: {user: 'name'},
+				favorites: ['favorites']
+			}
+
+			const expected = {
+				loggedIn: mockState.loggedIn,
+				favorites: mockState.favorites 
+			}
+
+			const mappedProps = mapStateToProps(mockState)
+			expect(mappedProps).toEqual(expected)
+		})
+	})
+
+	describe('mapDispatchToProps', () => {
+
+		it('should call dispatch when using a function from MDTP', () => {
+
+			const mockDispatch = jest.fn();
+
+			const actionToDispatch = toggleFavorite(9);
+
+			const mappedProps= mapDispatchToProps(mockDispatch)
+
+			mappedProps.toggleFavorite(9)
+
+			expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
+		})
+	})
 });

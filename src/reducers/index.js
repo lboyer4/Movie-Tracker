@@ -4,6 +4,8 @@ import { updateLogin } from './updateLoginReducer';
 import { setFavorites } from './setFavoritesReducer';
 
 export const rootReducer = combineReducers ({
-		movies: addMovies, loggedIn: updateLogin, favorites: setFavorites
+		movies: addMovies, 
+		loggedIn: updateLogin, 
+		favorites: setFavorites
 })
 
