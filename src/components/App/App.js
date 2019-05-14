@@ -11,9 +11,10 @@ import Header from '../Header/Header';
 import Login from '../../containers/Login/Login';
 import Signup from '../../containers/Signup/Signup';
 import FavoriteContainer from '../../containers/FavoriteContainer/FavoriteContainer';
-import MovieDetails from '../MovieDetails/MovieDetails'
+import MovieDetails from '../MovieDetails/MovieDetails';
+import { cleanMovies } from '../../utils/cleaners';
 
-class App extends Component {
+export class App extends Component {
   constructor() {
     super();
     this.state={
@@ -28,22 +29,9 @@ class App extends Component {
     ) 
   }
 
-  makeMovies = (results) => {
-    results = results.map(movie => {
-      return {
-        movie_id: movie.id,
-        release_date: movie.release_date,
-        vote_average: movie.vote_average,
-        title: movie.title,
-        poster_path: 'https://image.tmdb.org/t/p/w300_and_h450_bestv2/' + movie.poster_path,
-        overview: movie.overview,
-        favorited: false,
-        key: movie.id
-      }
-    })
-    this.props.addMovies(
-    results
-    )
+  makeMovies = (movies) => {
+    movies = cleanMovies(movies);
+    this.props.addMovies(movies);
   }
 
   render() {
@@ -68,11 +56,11 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
   movies: state.movies
 })
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   addMovies: (movies) => dispatch(addMovies(movies))
 })
 
