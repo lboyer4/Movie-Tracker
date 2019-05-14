@@ -4,31 +4,31 @@
 }
 
 .card {
-  margin: 30px;
+  margin: 1rem;
   max-width: 19rem;
   border-radius: 2rem;
   opacity: 1;
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.04);
+    transform: rotate(2deg);
+    transition: all ease-in-out .3s;
+    height: 20rem;
+  }
 }
 
 img {
   opacity: 0.9;
   border-radius: 1rem;
-}
-
-img:hover {
-  opacity: 1;
-}
-.card:hover {
-  cursor: pointer;
-  transform: scale(1.04);
-  transform: rotate(2deg);
-  transition: all ease-in-out .3s;
-  height: 20rem;
+  &:hover {
+    opacity: 1;
+  }
 }
 
 .fav-btn {
   background-color: transparent;
-  border: 2px solid $header-color;
+  border: .1rem solid $header-color;
+  font-family: $fave-btn-font;
   color: $header-color;
   margin-top: 1rem;
   border-radius: .8rem;
@@ -40,11 +40,14 @@ img:hover {
     background-color: $header-color;
     color: $link-hover-color;
     border: none;
+    opacity: 0.7;
+    transition: 0.4s;
   }
 }
 
 .login-msg {
-  color: hsl(0, 100%, 50%);
+  color: $login-msg-error-color;
+  font-family: $login-error-color;
   font-size: 1.5rem;
 }
 

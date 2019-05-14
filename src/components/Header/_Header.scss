@@ -30,5 +30,7 @@ a.nav {
   margin: .8rem;
   &:hover {
     color: $link-hover-color;
+    opacity: 0.9;
+    transition: 0.4s;
   }
 }
