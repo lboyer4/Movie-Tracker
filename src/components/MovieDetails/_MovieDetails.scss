@@ -1,21 +1,24 @@
 article {
+	background-color: hsl(14, 90%, 44%);
 	border-radius: 2rem;
 	display: grid;
 	grid-template-columns: 28% 30%;
-	width: 70rem;
+	width: 45rem;
+	height: 29rem;
+	display: flex;
 	margin: auto;
-	color: hsl(14, 90%, 44%);;
+	color: hsl(14, 90%, 44%);
+	margin-top: 5rem;
 }
 
 .left {
-	margin-top: 5rem;
 	grid-column: 1;
-	border: .5rem solid hsl(14, 90%, 44%);;
+	border: .5rem solid hsl(14, 90%, 44%);
+	border-radius: 1.1rem
 }
 
 .right {
 	padding: 1rem;
-	margin-top: 5rem;
 	grid-column: 2;
 	background-color: hsl(62, 82.6%, 82%);
 }
