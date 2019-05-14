@@ -2,13 +2,18 @@ import React from 'react';
 import { MovieContainer } from './MovieContainer';
 import { shallow } from 'enzyme';
 import { mapStateToProps } from './MovieContainer';
+import { mockSelectedMovie } from '../../utils/mockData';
 
 describe('MovieContainer', () => {
-  it.skip('should match snapshot', () => {
+
+  it('should match snapshot', () => {
     const wrapper = shallow(
-      <MovieContainer />
+      <MovieContainer 
+      movies={ [mockSelectedMovie]
+      
+      }/>
     )
-    expect(wrapper).toMatchSnapShot();
+    expect(wrapper).toMatchSnapshot();
   });
 
   describe('mapStateToProps', () => {
