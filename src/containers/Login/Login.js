@@ -5,7 +5,7 @@ import { updateLogin } from '../../actions';
 import { Redirect } from 'react-router-dom';
 import { setFavorites } from '../../actions';
 
-class Login extends Component {
+export class Login extends Component {
 	constructor() {
 		super()
 		this.state = {
@@ -87,11 +87,11 @@ class Login extends Component {
 	}
 }
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
 	loggedIn: state.loggedIn
 })
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
 	updateLogin: (user) => dispatch(updateLogin(user)),
 	setFavorites: (favorites) => dispatch(setFavorites(favorites))
 })
