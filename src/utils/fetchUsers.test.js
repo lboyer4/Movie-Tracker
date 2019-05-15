@@ -32,6 +32,13 @@ describe('fetchUsers', () => {
     expect(result).toEqual(mockResponse)
   });
 
-  
-
+  it.skip('should return an error if status is not ok', async () => {
+		window.fetch = jest.fn().mockImplementation(() => {
+			return Promise.resolve({
+				ok: false
+			})
+		})
+		const result = await fetchUsers()
+    expect(result).rejects.toThrow('error')
+	});
 })
