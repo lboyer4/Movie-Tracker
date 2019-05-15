@@ -5,7 +5,7 @@ import { toggleFavorite } from '../../actions';
 import { Route, Link } from 'react-router-dom';
 import MovieDetails from '../MovieDetails/MovieDetails';
 
-class Movie extends Component {
+export class Movie extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -28,6 +28,7 @@ class Movie extends Component {
 
 	deleteFavoriteMovie = (movie_id) => {
 		const { id } = this.props.loggedIn
+		
 		const url = `http://localhost:3000/api/users/${id}/favorites/${movie_id}`
 		const options = {
 			method: 'DELETE',
@@ -39,7 +40,7 @@ class Movie extends Component {
 				movie_id
 			})
 		}
-		fetch(url, options)
+		fetchUsers(url, options)
 	}
 
 	postFavoriteMovie = () => {
@@ -91,12 +92,12 @@ class Movie extends Component {
 	}
 }
 
-const mapStateToProps = (state) => ({
+export const mapStateToProps = (state) => ({
 	loggedIn: state.loggedIn,
 	favorites: state.favorites
 })
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
 	toggleFavorite: (id) => dispatch(toggleFavorite(id))
 })
 

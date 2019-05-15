@@ -1,10 +1,13 @@
 import React from 'react';
-import { Movie, mapsDispatchToProps, mapStateToProps } from './Movie';
+import { Movie, mapStateToProps,mapDispatchToProps,  } from './Movie';
 import { shallow } from 'enzyme';
+import { toggleFavorite } from '../../actions';
 
 
 describe('Movie', () => {
 	let wrapper;
+
+	const mockId = 9;
 
 	const mockMovie = {
 		favorited: false,
@@ -24,7 +27,54 @@ describe('Movie', () => {
 		)
 	})
 
-	it.skip('should match snapshot', () => {
+	it('should match snapshot', () => {
 		expect(wrapper).toMatchSnapshot();
 	});
+
+	describe('handleClick', () => {
+
+	})
+
+	describe('deleteFavoriteMovie', () => {
+		it.skip('should call fetchUsers', () => {
+			wrapper.instance().deleteFavoriteMovie(mockId)
+			expect(fetchUsers).toHaveBeenCalled();
+		})
+	})
+
+	describe('mapStateToProps', () => {
+
+		it('should return a user object and a favorites array', () => {
+
+			const mockState = {
+				loggedIn: {user: 'name'},
+				favorites: ['favorites']
+			}
+
+			const expected = {
+				loggedIn: mockState.loggedIn,
+				favorites: mockState.favorites 
+			}
+
+			const mappedProps = mapStateToProps(mockState)
+
+			expect(mappedProps).toEqual(expected)
+		})
+	})
+
+	describe('mapDispatchToProps', () => {
+
+		it('should call dispatch when using a function from MDTP', () => {
+
+			const mockDispatch = jest.fn();
+
+			const actionToDispatch = toggleFavorite(9);
+
+			const mappedProps= mapDispatchToProps(mockDispatch)
+
+			mappedProps.toggleFavorite(9)
+
+			expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
+		})
+	})
 });
