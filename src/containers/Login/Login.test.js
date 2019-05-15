@@ -1,15 +1,63 @@
 import React from 'react';
-import Login from './Login'
 import { shallow } from 'enzyme';
-import { mapStateToProps, mapDispatchToProps } from './Login'
+import { Login, mapStateToProps, mapDispatchToProps } from './Login';
+import { setFavorites, updateLogin } from '../../actions'
+
 
 describe('Login', () => {
-	it.skip('should match snapshot', () => {
+	it('should match snapshot', () => {
 		const wrapper = shallow(
 			<Login />
 		)
 		expect(wrapper).toMatchSnapshot();
 	});
 
-	
+		describe('mapStateToProps', () => {
+
+		it('should return a user object and a favorites array', () => {
+
+			const mockState = {
+				loggedIn: {user: 'name'},
+			}
+
+			const expected = {
+				loggedIn: mockState.loggedIn,
+			}
+
+			const mappedProps = mapStateToProps(mockState)
+
+			expect(mappedProps).toEqual(expected)
+		})
+	})
+
+	describe('mapDispatchToProps', () => {
+
+		it('should call dispatch when using a function from MDTP', () => {
+
+			const mockDispatch = jest.fn();
+
+			const actionToDispatch = updateLogin({name: 'joe'})
+				// setFavorites(['favorite'])
+
+			const mappedProps= mapDispatchToProps(mockDispatch)
+
+			mappedProps.updateLogin({name: 'joe'})
+
+			// mappedProps.setFavorites([{favorite: favorite}])
+
+			expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
+		})
+
+	it('should call dispatch when using a function from MDTP', () => {
+					const mockDispatch = jest.fn();
+
+			const actionToDispatch = setFavorites(['favorite'])
+
+			const mappedProps= mapDispatchToProps(mockDispatch)
+
+			mappedProps.setFavorites(['favorite'])
+
+			expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
+	})
+	})
 })
