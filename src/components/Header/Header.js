@@ -13,7 +13,6 @@ export const Header = (props) => {
 		<button className='login btn'>
 			<NavLink to='/login' className="nav"> Login </NavLink>
 		</button>
-		console.log(props)
 		toggleLogin = props.loggedIn.id ? logUserOut : logUserIn 
 		let viewFavorites = 
 		<button className='view-fave btn'>
