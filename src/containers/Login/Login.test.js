@@ -37,13 +37,10 @@ describe('Login', () => {
 			const mockDispatch = jest.fn();
 
 			const actionToDispatch = updateLogin({name: 'joe'})
-				// setFavorites(['favorite'])
 
 			const mappedProps= mapDispatchToProps(mockDispatch)
 
 			mappedProps.updateLogin({name: 'joe'})
-
-			// mappedProps.setFavorites([{favorite: favorite}])
 
 			expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
 		})
