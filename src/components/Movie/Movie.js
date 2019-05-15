@@ -28,6 +28,7 @@ export class Movie extends Component {
 
 	deleteFavoriteMovie = (movie_id) => {
 		const { id } = this.props.loggedIn
+		
 		const url = `http://localhost:3000/api/users/${id}/favorites/${movie_id}`
 		const options = {
 			method: 'DELETE',
@@ -39,7 +40,7 @@ export class Movie extends Component {
 				movie_id
 			})
 		}
-		fetch(url, options)
+		fetchUsers(url, options)
 	}
 
 	postFavoriteMovie = () => {

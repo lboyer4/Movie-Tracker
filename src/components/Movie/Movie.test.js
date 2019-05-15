@@ -7,6 +7,8 @@ import { toggleFavorite } from '../../actions';
 describe('Movie', () => {
 	let wrapper;
 
+	const mockId = 9;
+
 	const mockMovie = {
 		favorited: false,
 		movie_id: 514439,
@@ -29,7 +31,18 @@ describe('Movie', () => {
 		expect(wrapper).toMatchSnapshot();
 	});
 
-		describe('mapStateToProps', () => {
+	describe('handleClick', () => {
+
+	})
+
+	describe('deleteFavoriteMovie', () => {
+		it.skip('should call fetchUsers', () => {
+			wrapper.instance().deleteFavoriteMovie(mockId)
+			expect(fetchUsers).toHaveBeenCalled();
+		})
+	})
+
+	describe('mapStateToProps', () => {
 
 		it('should return a user object and a favorites array', () => {
 
@@ -44,6 +57,7 @@ describe('Movie', () => {
 			}
 
 			const mappedProps = mapStateToProps(mockState)
+
 			expect(mappedProps).toEqual(expected)
 		})
 	})
