@@ -4,13 +4,24 @@ import { shallow } from 'enzyme';
 import { mapStateToProps, mapDispatchToProps } from './Header';
 import { logOut } from '../../actions';
 
-// jest.mock('../../actions')
+const mockLoggedIn = {
+  id: 2,
+  name: "Ryan",
+  password: "puppies",
+  email: "puppies@gmail.com"
+}
+
+const mockLogOut= jest.fn()
+
 
 describe('Header', () => {
 
-  it.skip('should match the snapshot', () => {
+  it('should match the snapshot', () => {
     const wrapper = shallow(
-      <Header />
+      <Header
+        loggedIn={mockLoggedIn}
+        logOut={mockLogOut} 
+      />
     )
     expect(wrapper).toMatchSnapshot()
   });
