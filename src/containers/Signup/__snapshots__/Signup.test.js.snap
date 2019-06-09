@@ -1,3 +1,51 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Signup should match snapshot 1`] = `ShallowWrapper {}`;
+exports[`Signup should match snapshot 1`] = `
+<form
+  className="submit-form"
+  onSubmit={[Function]}
+>
+  <div
+    className="create-header"
+  >
+    <h1
+      className="form-title"
+    >
+       Create Account 
+    </h1>
+  </div>
+  <h3
+    className="error-msg"
+  >
+     
+     
+  </h3>
+  <input
+    className="name"
+    name="name"
+    onChange={[Function]}
+    placeholder="name"
+    type="text"
+    value=""
+  />
+  <input
+    name="email"
+    onChange={[Function]}
+    placeholder="email"
+    type="text"
+    value=""
+  />
+  <input
+    name="password"
+    onChange={[Function]}
+    placeholder="password"
+    type="password"
+    value=""
+  />
+  <button
+    className="submit-btn"
+  >
+     Submit 
+  </button>
+</form>
+`;

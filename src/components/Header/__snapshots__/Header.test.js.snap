@@ -1,3 +1,46 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Header should match the snapshot 1`] = `ShallowWrapper {}`;
+exports[`Header should match the snapshot 1`] = `
+<header>
+  <h1
+    className="title"
+  >
+     Movie Tracker 
+  </h1>
+  <section
+    className="link-wrapper"
+  >
+    <button
+      className="view-fave btn"
+    >
+      <NavLink
+        className="nav"
+        to="/favorites"
+      >
+         View Favorites 
+      </NavLink>
+    </button>
+    <button
+      className="logout btn"
+      onClick={[MockFunction]}
+    >
+      <NavLink
+        className="nav"
+        to="/login"
+      >
+         Logout 
+      </NavLink>
+    </button>
+    <button
+      className="signup btn"
+    >
+      <NavLink
+        className="nav"
+        to="/signup"
+      >
+         Signup 
+      </NavLink>
+    </button>
+  </section>
+</header>
+`;
