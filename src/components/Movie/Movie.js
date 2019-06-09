@@ -4,6 +4,7 @@ import { fetchUsers } from '../../utils/fetchUsers';
 import { toggleFavorite } from '../../actions';
 import { Route, Link } from 'react-router-dom';
 import MovieDetails from '../MovieDetails/MovieDetails';
+import PropTypes from 'prop-types';
 
 export class Movie extends Component {
 	constructor(props) {

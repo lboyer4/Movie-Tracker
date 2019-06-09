@@ -1,5 +1,6 @@
 import React from 'react';
 import './_MovieDetails.scss';
+import PropTypes from 'prop-types';
 
 const MovieDetails = ({ movie_id, title, poster_path, release_date, vote_average, overview, favorited}) => {
 	return (
@@ -17,6 +18,14 @@ const MovieDetails = ({ movie_id, title, poster_path, release_date, vote_average
 	)
 }
 
-
-
 export default MovieDetails;
+
+MovieDetails.propTypes = {
+	favorited: PropTypes.bool,
+	movie_id: PropTypes.number,
+	overview: PropTypes.string,
+	poster_path: PropTypes.string,
+	release_date: PropTypes.string,
+	title: PropTypes.string,
+	vote_average: PropTypes.number
+}
