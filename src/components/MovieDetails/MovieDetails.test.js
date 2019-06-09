@@ -16,6 +16,6 @@ describe('MovieDetails', () => {
 			<MovieDetails
 				selectedMovie={ mockSelectedMovie }
 			/>
-		)
-	})
-})
+		);
+	});
+});

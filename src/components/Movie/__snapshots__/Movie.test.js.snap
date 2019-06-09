@@ -1,3 +1,38 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Movie should match snapshot 1`] = `ShallowWrapper {}`;
+exports[`Movie should match snapshot 1`] = `
+<section
+  className="card"
+>
+  <section
+    className="movie-info-wrapper"
+  >
+    <Link
+      to="/movies/514439"
+    >
+      <img
+        alt="movie poster"
+        src="https://image.tmdb.org/t/p/w300_and_h450_bestv2//t58dx7JIgchr9If5uxn3NmHaHoS.jpg"
+      />
+    </Link>
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/movies/514439"
+    />
+    <button
+      className="fav-btn"
+      onClick={[Function]}
+    >
+      <h4
+        className="toggle-msg"
+      >
+         Favorite 
+      </h4>
+    </button>
+  </section>
+  <h3
+    className="login-msg"
+  />
+</section>
+`;

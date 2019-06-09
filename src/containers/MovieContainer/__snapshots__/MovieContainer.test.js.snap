@@ -1,3 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MovieContainer should match snapshot 1`] = `ShallowWrapper {}`;
+exports[`MovieContainer should match snapshot 1`] = `
+<section
+  className="main"
+>
+  <section
+    className="image-container"
+  >
+    <ConnectFunction
+      favorited={false}
+      key="447404"
+      movie_id={447404}
+      overview="In a world where people collect pocket-size monsters (Pokémon) to do battle, a boy comes across an intelligent monster who seeks to be a detective."
+      poster_path="https://image.tmdb.org/t/p/w300_and_h450_bestv2//wgQ7APnFpf1TuviKHXeEe3KnsTV.jpg"
+      release_date="2019-05-03"
+      title="Pokémon Detective Pikachu"
+      vote_average={7.1}
+    />
+  </section>
+</section>
+`;

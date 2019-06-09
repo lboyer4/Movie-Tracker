@@ -3,9 +3,15 @@ import { shallow } from 'enzyme';
 import { App, mapStateToProps, mapDispatchToProps } from './App';
 import { mockUncleanMovie } from '../../utils/mockdata';
 import {cleanMovies} from '../../utils/cleaners';
-import { addMovies } from '../../actions'
+import { addMovies } from '../../actions';
+import { fetchMovie } from '../../utils/fetchMovie.js';
+import { apikey } from '../../apikey';
 
 jest.mock('../../utils/cleaners');
+
+jest.mock('../../utils/fetchMovie.js')
+fetchMovie.mockImplementation(() => 
+	Promise.resolve( {ok: true}))
 
 const mockCleanMovies = jest.fn();
 const mockMakeMovies = jest.fn();
@@ -18,7 +24,6 @@ describe('App', () => {
 				<App 
 				addMovies= {jest.fn()} 
 				/>
-      
 		);
 	});
 
@@ -28,24 +33,24 @@ describe('App', () => {
 
 	describe('componentDidMount', () => {
 
-		it.skip('should call fetch movie when mounted', () => {
+		it('should call fetch movie when mounted', () => {
 			const wrapper = shallow(<App />)
-			const instance= wrapper.instance();
-			jest.spyOn(instance, 'fetchMovie');
-			instance.componentDidMount();
 
-			expect(instance.fetchMovie).toHaveBeenCalled()
-		})
-	})
+			const mockUrl = `https://api.themoviedb.org/3/movie/upcoming?api_key=${apikey}&language=en-US&page=1`
+			
+			wrapper.instance().componentDidMount();
+
+			expect(fetchMovie).toHaveBeenCalledWith(mockUrl)
+		});
+	});
 
 	describe('makeMovies', () => {
 
 		it('should call clean movies', () => {
 			wrapper.instance().makeMovies([mockUncleanMovie])
 			expect(cleanMovies).toHaveBeenCalled();
-
-		})
-	})
+		});
+	});
 
 	describe('mapStateToProps', () => {
 

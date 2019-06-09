@@ -12,7 +12,40 @@ describe('Login', () => {
 		expect(wrapper).toMatchSnapshot();
 	});
 
-		describe('mapStateToProps', () => {
+	describe('handleChange', () => {
+		it('should set state when handle change is called', () => {
+			const mockUserEvent = {
+				target: {
+					name: 'email',
+					value: 'puppies@gmail'
+				}
+			}
+
+			const wrapper = shallow(
+			<Login />
+			)
+			wrapper.instance().handleChange(mockUserEvent)
+			expect(wrapper.state().email).toEqual('puppies@gmail')
+		});
+	});
+
+	describe('handleSubmit', () => {
+		it.skip('should call post login', () => {
+			const wrapper = shallow(
+			<Login />
+			)
+			const mockSubmit = {
+				preventDefault: () => {}
+			};
+			const mockState = {
+				email: 'puppies@gmail'
+			}
+			wrapper.setState(mockState);
+			wrapper.instance().handleSubmit(mockSubmit);
+			expect(wrapper.state().email).toEqual(mockState)
+		})
+	})
+	describe('mapStateToProps', () => {
 
 		it('should return a user object and a favorites array', () => {
 

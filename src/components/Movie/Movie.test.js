@@ -2,7 +2,12 @@ import React from 'react';
 import { Movie, mapStateToProps,mapDispatchToProps,  } from './Movie';
 import { shallow } from 'enzyme';
 import { toggleFavorite } from '../../actions';
+import { fetchUsers } from '../../utils/fetchUsers';
+import { apikey } from '../../apikey';
 
+jest.mock('../../utils/fetchUsers')
+fetchUsers.mockImplementation(() =>
+	Promise.resolve( {ok: true}) )
 
 describe('Movie', () => {
 	let wrapper;
@@ -25,22 +30,84 @@ describe('Movie', () => {
 				{...mockMovie}
 					/>
 		)
-	})
+	});
 
 	it('should match snapshot', () => {
 		expect(wrapper).toMatchSnapshot();
 	});
 
 	describe('handleClick', () => {
+		it('should set state with create account messafge if theres no loggedIn id', () => {
+			wrapper = shallow(
+				<Movie
+					loggedIn={{id: null}}
+				/>
+			)
 
-	})
+			wrapper.instance().handleClick()
+			expect(wrapper.instance().state.createAccountMsg).toEqual('* Please create an account')
+		});
+
+		it('should change favorited to true if favorited is false', () => {
+			wrapper = shallow(
+				<Movie
+					{...mockMovie}
+					loggedIn={{id: 1}}
+					favorited= {false}
+					toggleFavorite={jest.fn()}
+				/>
+			)
+
+			wrapper.instance().handleClick()
+			expect(wrapper.instance().props.toggleFavorite).toHaveBeenCalledWith(mockMovie.movie_id)
+		});
+
+		it('should change favorited to false if favorite is true', () => {
+			wrapper = shallow(
+				<Movie
+					{...mockMovie}
+					loggedIn={{id: 1}}
+					favorited={true}
+					toggleFavorite={jest.fn()}
+					deleteFavoriteMovie={jest.fn()}
+				/>
+			)
+
+			wrapper.instance().handleClick()
+			expect(wrapper.instance().props.toggleFavorite).toHaveBeenCalledWith(mockMovie.movie_id)
+		});
+	});
 
 	describe('deleteFavoriteMovie', () => {
-		it.skip('should call fetchUsers', () => {
+		it('should call fetchUsers', () => {
+			const wrapper = shallow(
+				<Movie 
+					{...mockMovie}
+					loggedIn={{id: 1}}
+					favorited={true}
+					toggleFavorite={jest.fn()}
+					deleteFavoriteMovie={jest.fn()}
+				/>)
 			wrapper.instance().deleteFavoriteMovie(mockId)
 			expect(fetchUsers).toHaveBeenCalled();
-		})
-	})
+		});
+	});
+
+	describe('postFavoriteMovie', () => {
+		it('should call fetch users', () => {
+			const wrapper = shallow(
+				<Movie 
+					{...mockMovie}
+					loggedIn={{id: 1}}
+					favorited={true}
+					toggleFavorite={jest.fn()}
+				/>
+			)
+
+			wrapper.instance().postFavoriteMovie();
+			expect(fetchUsers).toHaveBeenCalled();
+		});
+	});
 
 	describe('mapStateToProps', () => {
 
@@ -56,11 +123,11 @@ describe('Movie', () => {
 				favorites: mockState.favorites 
 			}
 
-			const mappedProps = mapStateToProps(mockState)
+			const mappedProps = mapStateToProps(mockState);
 
-			expect(mappedProps).toEqual(expected)
-		})
-	})
+			expect(mappedProps).toEqual(expected);
+		});
+	});
 
 	describe('mapDispatchToProps', () => {
 
@@ -70,11 +137,11 @@ describe('Movie', () => {
 
 			const actionToDispatch = toggleFavorite(9);
 
-			const mappedProps= mapDispatchToProps(mockDispatch)
+			const mappedProps= mapDispatchToProps(mockDispatch);
 
-			mappedProps.toggleFavorite(9)
+			mappedProps.toggleFavorite(9);
 
-			expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
-		})
-	})
+			expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+		});
+	});
 });

@@ -34,11 +34,11 @@ export const Header = (props) => {
 
 export const mapStateToProps = (state) => ({
 	loggedIn: state.loggedIn
-})
+});
 
 export const mapDispatchToProps = (dispatch) => ({
 	logOut: () => dispatch(logOut())
-})
+});
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header)

@@ -4,13 +4,24 @@ import { shallow } from 'enzyme';
 import { mapStateToProps, mapDispatchToProps } from './Header';
 import { logOut } from '../../actions';
 
-// jest.mock('../../actions')
+const mockLoggedIn = {
+  id: 2,
+  name: "Ryan",
+  password: "puppies",
+  email: "puppies@gmail.com"
+}
+
+const mockLogOut= jest.fn()
+
 
 describe('Header', () => {
 
-  it.skip('should match the snapshot', () => {
+  it('should match the snapshot', () => {
     const wrapper = shallow(
-      <Header />
+      <Header
+        loggedIn={mockLoggedIn}
+        logOut={mockLogOut} 
+      />
     )
     expect(wrapper).toMatchSnapshot()
   });
@@ -26,20 +37,20 @@ describe('Header', () => {
 
         const mappedProps = mapStateToProps(mockState);
 
-        expect(mappedProps).toEqual(expected)
-      })
+        expect(mappedProps).toEqual(expected);
+      });
     });
 
-    describe('mapDispatchToProps', () => {
-      it('should call dispatch when using a function from mapStateToDispatch', () => {
-        const mockDispatch = jest.fn();
-        const actionToDispatch = logOut();
+  describe('mapDispatchToProps', () => {
+    it('should call dispatch when using a function from mapStateToDispatch', () => {
+      const mockDispatch = jest.fn();
+      const actionToDispatch = logOut();
 
-        const mappedProps = mapDispatchToProps(mockDispatch)
+      const mappedProps = mapDispatchToProps(mockDispatch);
 
-        mappedProps.logOut()
+      mappedProps.logOut();
 
-        expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
-      })
-    })
-})
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
+  });
+});

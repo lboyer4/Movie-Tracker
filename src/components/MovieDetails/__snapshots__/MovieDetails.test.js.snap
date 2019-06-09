@@ -1,3 +1,36 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MovieDetails should match snapshot without a selected movie 1`] = `ShallowWrapper {}`;
+exports[`MovieDetails should match snapshot without a selected movie 1`] = `
+<article>
+  <div
+    className="left"
+  >
+    <img
+      alt="movie poster"
+    />
+  </div>
+  <div
+    className="right"
+  >
+    <h1
+      className="movie-title-detail"
+    />
+    <h5
+      className="date-detail"
+    >
+      Release Date: 
+    </h5>
+    <p
+      className="overview-details"
+    >
+       
+       
+    </p>
+    <h6
+      className="vote-detail"
+    >
+       Vote Average: 
+    </h6>
+  </div>
+</article>
+`;
