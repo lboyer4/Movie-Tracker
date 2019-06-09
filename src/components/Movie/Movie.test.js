@@ -104,10 +104,10 @@ describe('Movie', () => {
 				/>
 			)
 
-			wrapper.instance().postFavoriteMovie()
-			expect(fetchUsers).toHaveBeenCalled()
-		})
-	})
+			wrapper.instance().postFavoriteMovie();
+			expect(fetchUsers).toHaveBeenCalled();
+		});
+	});
 
 	describe('mapStateToProps', () => {
 
