@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './_App.scss';
 import '../../index.scss';
 import { Route } from 'react-router-dom';
-import { apikey } from '../../utils/apikey';
+import { apikey } from '../../apikey';
 import { fetchMovie } from '../../utils/fetchMovie.js';
 import { addMovies } from '../../actions'
 import { connect } from 'react-redux';
