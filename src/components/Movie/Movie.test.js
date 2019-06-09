@@ -2,7 +2,12 @@ import React from 'react';
 import { Movie, mapStateToProps,mapDispatchToProps,  } from './Movie';
 import { shallow } from 'enzyme';
 import { toggleFavorite } from '../../actions';
+import { fetchUsers } from '../../utils/fetchUsers';
+import { apikey } from '../../apikey';
 
+jest.mock('../../utils/fetchUsers')
+fetchUsers.mockImplementation(() =>
+	Promise.resolve( {ok: true}) )
 
 describe('Movie', () => {
 	let wrapper;
@@ -55,12 +60,34 @@ describe('Movie', () => {
 
 			wrapper.instance().handleClick()
 			expect(wrapper.instance().props.toggleFavorite).toHaveBeenCalledWith(mockMovie.movie_id)
+		});
 
-		})
+		it('should change favorited to false if favorite is true', () => {
+			wrapper = shallow(
+				<Movie
+					{...mockMovie}
+					loggedIn={{id: 1}}
+					favorited={true}
+					toggleFavorite={jest.fn()}
+					deleteFavoriteMovie={jest.fn()}
+				/>
+			)
+
+			wrapper.instance().handleClick()
+			expect(wrapper.instance().props.toggleFavorite).toHaveBeenCalledWith(mockMovie.movie_id)
+		});
 	});
 
 	describe('deleteFavoriteMovie', () => {
-		it.skip('should call fetchUsers', () => {
+		it('should call fetchUsers', () => {
+			const wrapper = shallow(
+				<Movie 
+					{...mockMovie}
+					loggedIn={{id: 1}}
+					favorited={true}
+					toggleFavorite={jest.fn()}
+					deleteFavoriteMovie={jest.fn()}
+				/>)
 			wrapper.instance().deleteFavoriteMovie(mockId)
 			expect(fetchUsers).toHaveBeenCalled();
 		});
