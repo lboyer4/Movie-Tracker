@@ -37,20 +37,20 @@ describe('Header', () => {
 
         const mappedProps = mapStateToProps(mockState);
 
-        expect(mappedProps).toEqual(expected)
-      })
+        expect(mappedProps).toEqual(expected);
+      });
     });
 
-    describe('mapDispatchToProps', () => {
-      it('should call dispatch when using a function from mapStateToDispatch', () => {
-        const mockDispatch = jest.fn();
-        const actionToDispatch = logOut();
+  describe('mapDispatchToProps', () => {
+    it('should call dispatch when using a function from mapStateToDispatch', () => {
+      const mockDispatch = jest.fn();
+      const actionToDispatch = logOut();
 
-        const mappedProps = mapDispatchToProps(mockDispatch)
+      const mappedProps = mapDispatchToProps(mockDispatch);
 
-        mappedProps.logOut()
+      mappedProps.logOut();
 
-        expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch)
-      })
-    })
-})
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
+  });
+});
