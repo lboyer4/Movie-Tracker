@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logOut } from '../../actions';
+import PropTypes from 'prop-types';
 
 export const Header = (props) => {
 	let toggleLogin;
@@ -41,4 +42,13 @@ export const mapDispatchToProps = (dispatch) => ({
 });
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Header)
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
+
+Header.propTypes = {
+
+history: PropTypes.object,
+location: PropTypes.object,
+logOut: PropTypes.func,
+loggedIn: PropTypes.object,
+match: PropTypes.object
+}
