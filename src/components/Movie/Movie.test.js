@@ -93,6 +93,22 @@ describe('Movie', () => {
 		});
 	});
 
+	describe('postFavoriteMovie', () => {
+		it('should call fetch users', () => {
+			const wrapper = shallow(
+				<Movie 
+					{...mockMovie}
+					loggedIn={{id: 1}}
+					favorited={true}
+					toggleFavorite={jest.fn()}
+				/>
+			)
+
+			wrapper.instance().postFavoriteMovie()
+			expect(fetchUsers).toHaveBeenCalled()
+		})
+	})
+
 	describe('mapStateToProps', () => {
 
 		it('should return a user object and a favorites array', () => {
