@@ -103,3 +103,21 @@ export const mapDispatchToProps = (dispatch) => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Movie)
+
+MovieDetails.propTypes = {
+	favorited: PropTypes.bool,
+	favorites: PropTypes.array,
+	loggedIn: PropTypes.object,
+	movie_id: PropTypes.number,
+	overview: PropTypes.string,
+	poster_path: PropTypes.string,
+	release_date: PropTypes.string,
+	title: PropTypes.string,
+	vote_average: PropTypes.number,
+	toggleFavorite: PropTypes.func,
+	vote_average: PropTypes.number
+}
+
+
+
+
