@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { fetchUsers } from '../../utils/fetchUsers';
+import PropTypes from 'prop-types';
+
 
 export default class Signup extends Component {
 	constructor() {
@@ -80,4 +82,10 @@ export default class Signup extends Component {
 			</form>
 		)
 	}
+}
+
+Signup.propTypes = {
+	history: PropTypes.object,
+	location: PropTypes.object,
+	match: PropTypes.object
 }
