@@ -4,6 +4,7 @@ import { fetchUsers } from '../../utils/fetchUsers';
 import { toggleFavorite } from '../../actions';
 import { Route, Link } from 'react-router-dom';
 import MovieDetails from '../MovieDetails/MovieDetails';
+import PropTypes from 'prop-types';
 
 export class Movie extends Component {
 	constructor(props) {
@@ -102,3 +103,21 @@ export const mapDispatchToProps = (dispatch) => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Movie)
+
+MovieDetails.propTypes = {
+	favorited: PropTypes.bool,
+	favorites: PropTypes.array,
+	loggedIn: PropTypes.object,
+	movie_id: PropTypes.number,
+	overview: PropTypes.string,
+	poster_path: PropTypes.string,
+	release_date: PropTypes.string,
+	title: PropTypes.string,
+	vote_average: PropTypes.number,
+	toggleFavorite: PropTypes.func,
+	vote_average: PropTypes.number
+}
+
+
+
+

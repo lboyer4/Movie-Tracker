@@ -13,6 +13,7 @@ import Signup from '../../containers/Signup/Signup';
 import FavoriteContainer from '../../containers/FavoriteContainer/FavoriteContainer';
 import MovieDetails from '../MovieDetails/MovieDetails';
 import { cleanMovies } from '../../utils/cleaners';
+import PropTypes from 'prop-types';
 
 export class App extends Component {
   constructor() {
@@ -66,3 +67,7 @@ export const mapDispatchToProps = (dispatch) => ({
 
 export default connect(mapStateToProps, mapDispatchToProps)(App)
 
+App.propTypes = {
+  addMovies: PropTypes.func,
+  movies: PropTypes.array
+}

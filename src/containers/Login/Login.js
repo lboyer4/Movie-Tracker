@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 import { updateLogin } from '../../actions';
 import { Redirect } from 'react-router-dom';
 import { setFavorites } from '../../actions';
+import PropTypes from 'prop-types';
+
 
 export class Login extends Component {
 	constructor() {
@@ -18,14 +20,14 @@ export class Login extends Component {
 
 	handleChange = (e) => {
 		const { name, value } = e.target;
-		this.setState({ [name] : value })
-	}
+		this.setState({ [name] : value });
+	};
 
 	handleSubmit = (e) => {
 		e.preventDefault();
 		this.postLogin(this.state);
-		this.setState({ email: '', password: '' })
-	}
+		this.setState({ email: '', password: '' });
+	};
 
 	postLogin = (state) => {
 		const url = 'http://localhost:3000/api/users';
@@ -39,7 +41,7 @@ export class Login extends Component {
 				email, 
 				password
 			})
-		}
+		};
 
 		fetchUsers(url, options)
 		.then(results => {
@@ -51,8 +53,8 @@ export class Login extends Component {
 					results.data
           )
 			}
-		})
-	}
+		});
+	};
 
 	render() {
 		if(this.state.loggedIn) {
@@ -83,17 +85,26 @@ export class Login extends Component {
 				/>
 				<button className="submit-btn"> Submit </button>
 			</form>
-			)
-	}
-}
+			);
+	};
+};
 
 export const mapStateToProps = (state) => ({
 	loggedIn: state.loggedIn
-})
+});
 
 export const mapDispatchToProps = (dispatch) => ({
 	updateLogin: (user) => dispatch(updateLogin(user)),
 	setFavorites: (favorites) => dispatch(setFavorites(favorites))
-})
+});
 
-export default connect(mapStateToProps, mapDispatchToProps)(Login)
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
+
+Login.propType = {
+	history: PropTypes.object,
+	location: PropTypes.object,
+	loggedIn: PropTypes.object,
+	match:PropTypes.object,
+	setFavorites: PropTypes.func,
+	updateLogin: PropTypes.func,
+}
